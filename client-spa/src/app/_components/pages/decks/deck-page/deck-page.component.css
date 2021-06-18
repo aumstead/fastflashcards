@@ -1,0 +1,12 @@
+.btn-margin {
+  margin-right: 1rem;
+}
+
+.secondaryDropdown:hover {
+  background-color: var(--color-secondary);
+}
+
+.disableLink {
+  pointer-events: none;
+  opacity: 0.65;
+}

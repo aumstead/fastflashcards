@@ -1,0 +1,36 @@
+.my-card {
+  height: 30rem;
+  border-color: #c7c7c7;
+  box-shadow: 0px 2px 8px 1px rgb(14 30 37 / 12%);
+}
+
+/* .next-btn {
+  right: 1rem;
+} */
+
+.shuffle-btn {
+  border: none;
+  background-color: transparent;
+  height: min-content;
+  margin-right: 1.5rem;
+  color: var(--color-info);
+}
+
+.shuffle-btn:hover {
+  color: var(--color-info-hover);
+}
+
+.whiteSpace {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media only screen and (max-width: 550px) {
+  .studyUserInterface {
+    min-height: calc(100vh - 7rem);
+  }
+
+  .my-card {
+    flex: 1;
+  }
+}

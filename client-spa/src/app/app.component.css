@@ -1,0 +1,8 @@
+main {
+  /* min-height: calc(100vh - 75px); */
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas: "navbar" "content" "footer";
+  grid-template-columns: auto;
+  grid-template-rows: min-content auto 1fr;
+}

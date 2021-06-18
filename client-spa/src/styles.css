@@ -1,0 +1,50 @@
+:root {
+  --color-primary: #253544;
+  --color-primary-hover: #2c3e50;
+  --color-info: #3498db;
+  --color-info-hover: #2c81ba;
+  --color-secondary: #778485;
+  --color-secondary-hover: #7f8c8d;
+  --color-danger: #e74c3c;
+  --color-warning: #f39c12;
+  --color-warning-hover: #f26418;
+  --color-success: #18bc9c;
+  --color-success-hover: #14a085;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1rem;
+  background-color: #fefefe;
+}
+
+/* custom utility classes */
+.m-nav {
+  margin-top: 66px;
+}
+
+/* bootstrap/bootswatch override */
+.modal.show .modal-dialog {
+  transform: translateY(100px);
+}
+
+@media only screen and (max-width: 550px) {
+  body {
+    font-size: 0.8rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

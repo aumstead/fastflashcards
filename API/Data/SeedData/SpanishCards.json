@@ -1,0 +1,267 @@
+[
+  {
+    "Front": "Año",
+    "Back": "Year",
+    "Order": 1
+  },
+  {
+    "Order": 2,
+    "Front": "más",
+    "Back": "more"
+  },
+  {
+    "Order": 3,
+    "Front": "Ciudad",
+    "Back": "City"
+  },
+  {
+    "Order": 4,
+    "Front": "Baño",
+    "Back": "Bathroom"
+  },
+  {
+    "Order": 5,
+    "Front": "Escuela",
+    "Back": "School"
+  },
+  {
+    "Order": 6,
+    "Front": "Aquí",
+    "Back": "Here"
+  },
+  {
+    "Order": 7,
+    "Front": "Película",
+    "Back": "Movie"
+  },
+  {
+    "Order": 8,
+    "Front": "Familia",
+    "Back": "Family"
+  },
+  {
+    "Order": 9,
+    "Front": "Tener",
+    "Back": "to have"
+  },
+  {
+    "Order": 10,
+    "Front": "Hablar",
+    "Back": "to talk"
+  },
+  {
+    "Order": 11,
+    "Front": "Gustar",
+    "Back": "to like"
+  },
+  {
+    "Order": 12,
+    "Front": "Nuevo",
+    "Back": "new"
+  },
+  {
+    "Order": 13,
+    "Front": "Siempre",
+    "Back": "always"
+  },
+  {
+    "Order": 14,
+    "Front": "Antigua",
+    "Back": "old"
+  },
+  {
+    "Order": 15,
+    "Front": "Bueno",
+    "Back": "good"
+  },
+  {
+    "Order": 16,
+    "Front": "Fácil",
+    "Back": "easy"
+  },
+  {
+    "Order": 17,
+    "Front": "Difícil",
+    "Back": "difficult"
+  },
+  {
+    "Order": 18,
+    "Front": "Alto",
+    "Back": "high"
+  },
+  {
+    "Order": 19,
+    "Front": "Cerca",
+    "Back": "near"
+  },
+  {
+    "Order": 20,
+    "Front": "Pero",
+    "Back": "but"
+  },
+  {
+    "Order": 21,
+    "Front": "Porque",
+    "Back": "because"
+  },
+  {
+    "Order": 22,
+    "Front": "ahora",
+    "Back": "now"
+  },
+  {
+    "Order": 23,
+    "Front": "cuando",
+    "Back": "when"
+  },
+  {
+    "Order": 24,
+    "Front": "hacer",
+    "Back": "to do, to make"
+  },
+  {
+    "Order": 25,
+    "Front": "nunca",
+    "Back": "never"
+  },
+  {
+    "Order": 26,
+    "Front": "dónde",
+    "Back": "where"
+  },
+  {
+    "Order": 27,
+    "Front": "verdad",
+    "Back": "truth"
+  },
+  {
+    "Order": 28,
+    "Front": "Hoy",
+    "Back": "today"
+  },
+  {
+    "Order": 29,
+    "Front": "Mañana",
+    "Back": "tomorrow"
+  },
+  {
+    "Order": 30,
+    "Front": "Ayer",
+    "Back": "yesterday"
+  },
+  {
+    "Order": 31,
+    "Front": "Después",
+    "Back": "after"
+  },
+  {
+    "Order": 32,
+    "Front": "Sitio",
+    "Back": "place"
+  },
+  {
+    "Order": 33,
+    "Front": "País",
+    "Back": "country"
+  },
+  {
+    "Order": 34,
+    "Front": "Este/Esto/Esta",
+    "Back": "\"This\" or \"This one\""
+  },
+  {
+    "Order": 35,
+    "Front": "Ese/ Eso/Esa",
+    "Back": "\"That\" or \"That one\""
+  },
+  {
+    "Order": 36,
+    "Front": "Coche",
+    "Back": "car"
+  },
+  {
+    "Order": 37,
+    "Front": "Idioma",
+    "Back": "language"
+  },
+  {
+    "Order": 38,
+    "Front": "Mujer",
+    "Back": "woman"
+  },
+  {
+    "Order": 39,
+    "Front": "Hombre",
+    "Back": "man"
+  },
+  {
+    "Order": 40,
+    "Front": "Ver",
+    "Back": "to see"
+  },
+  {
+    "Order": 41,
+    "Front": "Dar",
+    "Back": "to give"
+  },
+  {
+    "Order": 42,
+    "Front": "Llevar",
+    "Back": "to carry"
+  },
+  {
+    "Order": 43,
+    "Front": "Encontrar",
+    "Back": "to find"
+  },
+  {
+    "Order": 44,
+    "Front": "Decir",
+    "Back": "to tell"
+  },
+  {
+    "Order": 45,
+    "Front": "Venir",
+    "Back": "to come"
+  },
+  {
+    "Order": 46,
+    "Front": "Pensar",
+    "Back": "to think"
+  },
+  {
+    "Order": 47,
+    "Front": "Leer",
+    "Back": "to read"
+  },
+  {
+    "Order": 48,
+    "Front": "Trabajar",
+    "Back": "to work"
+  },
+  {
+    "Order": 49,
+    "Front": "Usar",
+    "Back": "to use"
+  },
+  {
+    "Order": 50,
+    "Front": "Alguno",
+    "Back": "some"
+  },
+  {
+    "Order": 51,
+    "Front": "Bajo",
+    "Back": "low"
+  },
+  {
+    "Order": 52,
+    "Front": "Nunca",
+    "Back": "never"
+  },
+  {
+    "Order": 53,
+    "Front": "También",
+    "Back": "also"
+  }
+]

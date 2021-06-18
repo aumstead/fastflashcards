@@ -1,0 +1,44 @@
+<div class="container m-nav" *ngIf="user">
+  <div class="col-12 col-xl-6">
+    <h1 class="h2 pt-3">Decks</h1>
+    <button
+      type="button"
+      class="btn btn-primary mt-3"
+      (click)="openCreateDeckModal()"
+    >
+      New Deck +
+    </button>
+    <table
+      *ngIf="user.decks.length > 0; else noDecks"
+      class="table table-hover mt-3"
+    >
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Cards</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let deck of user.decks">
+          <td>
+            <a routerLink="/user/decks/{{ deck.id }}">{{ deck.name }}</a>
+          </td>
+          <td>{{ deck.cards.length }}</td>
+          <!-- <td>
+            <a routerLink="/user/decks/{{ deck.id }}/add-cards">Add Cards</a>
+          </td>
+          <td>
+            <a routerLink="/user/decks/{{ deck.id }}/study">Study</a>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noDecks>
+      <p class="mt-3" *ngIf="user.decks.length === 0">
+        You haven't made any decks yet. Click "New Deck" to create one.
+      </p>
+    </ng-template>
+  </div>
+</div>

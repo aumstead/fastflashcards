@@ -1,0 +1,59 @@
+<div class="container m-nav">
+  <div class="hero">
+    <div class="hero-info">
+      <h1>Fast Flash Cards</h1>
+      <h4 class="mb-4">
+        Create an account to store all of your cards for free.
+      </h4>
+      <a [routerLink]="['/register']" class="btn btn-success btn-lg registerBtn"
+        >Register</a
+      >
+      <a [routerLink]="['/login']" class="btn btn-info btn-lg loginBtn"
+        >Login</a
+      >
+    </div>
+
+    <div class="hero-graphic">
+      <div class="d-flex justify-content-between">
+        <h2 class="h6">
+          <button (click)="resetCounter()" class="demo-deck-btn">
+            Demo Deck
+          </button>
+        </h2>
+        <span>{{ counter + 1 }}/{{ demoCards.length }}</span>
+      </div>
+
+      <div class="card mb-3 my-card">
+        <div class="card-body">
+          <p class="h4 text-center w-100">{{ demoCards[counter].front }}</p>
+
+          <div *ngIf="reveal">
+            <hr />
+            <p class="h4 text-center w-100">
+              {{ demoCards[counter].back }}
+            </p>
+          </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-center">
+          <button
+            *ngIf="!reveal"
+            type="button"
+            class="btn btn-primary"
+            (click)="toggleReveal()"
+          >
+            Show Answer
+          </button>
+          <button
+            type="button"
+            class="btn btn-info"
+            *ngIf="reveal"
+            (click)="next()"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

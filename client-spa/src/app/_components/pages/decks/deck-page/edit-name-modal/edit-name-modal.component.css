@@ -1,0 +1,9 @@
+.closeBtn {
+  background-color: transparent;
+  border: none;
+  margin-top: -1rem;
+}
+
+.timesSpan {
+  font-size: 1.8rem;
+}

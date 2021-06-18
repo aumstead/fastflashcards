@@ -1,0 +1,134 @@
+.selectBtn {
+  min-width: 9rem;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.listHeadingFront {
+  margin-left: 2rem;
+  font-size: 1.2rem;
+}
+.listHeadingBack {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+.listHeadingOrder {
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
+.displayCardOrder {
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
+  max-height: 100px;
+  width: 3rem;
+}
+.displayCardFront {
+  margin: 0.5rem 0.5rem 0.5rem 1rem;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  max-height: 100px;
+  width: 50%;
+}
+.displayCardBack {
+  margin: 0.5rem 1rem 0.5rem 0.5rem;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  max-height: 100px;
+  width: 50%;
+}
+.displayCardBtn {
+  padding: 0rem;
+}
+.list-group-item:hover {
+  color: black;
+}
+.active:hover {
+  color: #fff;
+}
+
+.cancelDeleteBtn {
+  margin-left: 1rem;
+}
+.confirmDeleteBtn {
+  margin-left: 1rem;
+}
+.paginationWrapper {
+  font-size: 0.9rem;
+}
+
+.itemsPerPageLabel {
+  margin-left: 0.5rem;
+}
+
+.my-pagination /deep/ .ngx-pagination {
+  width: fit-content;
+  padding-left: 0rem;
+  margin-bottom: 0rem;
+}
+
+.my-pagination /deep/ .ngx-pagination li a {
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 3px;
+}
+
+.my-pagination /deep/ .ngx-pagination li a:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+  background: var(--color-primary);
+  padding: 0.35rem 0.8rem;
+  border-radius: 3px;
+}
+
+/* .editCardHeader {
+  display: none;
+} */
+
+@media only screen and (max-width: 550px) {
+  .listHeadingOrder {
+    font-size: 1rem;
+  }
+  .listHeadingFront {
+    margin-left: unset;
+    font-size: 1rem;
+  }
+  .listHeadingBack {
+    font-size: 1rem;
+  }
+  .displayCardOrder {
+    margin: unset;
+    margin-top: 0.2rem;
+    max-height: 35px;
+    text-align: center;
+  }
+  .displayCardFront {
+    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+    max-height: 35px;
+    width: 50%;
+  }
+  .displayCardBack {
+    /* margin: 0.5rem 1rem 0.5rem 0.5rem; */
+    margin: 0.2rem 0.2rem 0.2rem 0.2rem;
+    overflow: hidden;
+    max-height: 35px;
+    width: 50%;
+  }
+
+  .paginationWrapper {
+    flex-direction: column;
+  }
+
+  .itemsPerPageForm {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .editCardHeader {
+    display: block;
+  }
+}

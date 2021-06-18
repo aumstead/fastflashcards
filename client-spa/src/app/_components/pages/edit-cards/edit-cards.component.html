@@ -1,0 +1,189 @@
+<div class="container m-nav" *ngIf="user">
+  <h1 class="h2 pt-3">Edit Cards</h1>
+  <div class="btn-group mt-3" dropdown>
+    <button
+      id="button-basic"
+      dropdownToggle
+      type="button"
+      class="btn btn-primary dropdown-toggle selectBtn"
+      aria-controls="dropdown-basic"
+      [class.disabled]="user.decks.length === 0"
+    >
+      {{ selectedDeck ? selectedDeck.name : "Select a deck" }}
+      <span class="caret"></span>
+    </button>
+    <ul
+      id="dropdown-basic"
+      *dropdownMenu
+      class="dropdown-menu"
+      role="menu"
+      aria-labelledby="button-basic"
+    >
+      <ng-container *ngFor="let deck of user.decks">
+        <li role="menuitem">
+          <button class="dropdown-item" (click)="selectDeck(deck.id)">
+            {{ deck.name }}
+          </button>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="row justify-content-between">
+    <div class="col-xl-5 pt-4" *ngIf="selectedDeck; else noDecks">
+      <div class="d-flex justify-content-between">
+        <h4 class="selectCardHeader">Select Card</h4>
+        <h4>Total cards: {{ selectedDeck.cards.length }}</h4>
+      </div>
+      <div *ngIf="selectedDeck.cards.length > 0">
+        <h5 class="w-100 d-flex mt-1">
+          <span class="text-muted text-center listHeadingOrder">#</span>
+          <span class="w-50 text-muted text-center listHeadingFront"
+            >Front</span
+          >
+          <span class="w-50 text-muted text-center listHeadingBack">Back</span>
+        </h5>
+        <ul class="list-group">
+          <ng-container
+            *ngFor="
+              let card of collection
+                | paginate
+                  : { itemsPerPage: itemsPerPageForm.value, currentPage: p }
+            "
+          >
+            <button
+              class="
+                list-group-item list-group-item-action
+                d-flex
+                displayCardBtn
+              "
+              [ngClass]="{ active: card.id === selectedCard?.id }"
+              type="button"
+              (click)="selectCard(card.id)"
+            >
+              <span class="displayCardOrder">{{ card.order }}</span>
+              <p class="displayCardFront">{{ card.front }}</p>
+              <p class="displayCardBack">{{ card.back }}</p>
+            </button>
+          </ng-container>
+        </ul>
+
+        <div
+          class="
+            d-flex
+            justify-content-between
+            align-items-center
+            mt-3
+            paginationWrapper
+          "
+        >
+          <form class="itemsPerPageForm">
+            <select
+              [formControl]="itemsPerPageForm"
+              [value]="itemsPerPageForm.value"
+            >
+              <option [value]="10">10</option>
+              <option [value]="25">25</option>
+              <option [value]="50">50</option>
+            </select>
+            <label class="itemsPerPageLabel">Items Per Page</label>
+          </form>
+
+          <pagination-controls
+            class="my-pagination"
+            (pageChange)="p = $event"
+            (pageBoundsCorrection)="pageBoundsCorrection($event)"
+            responsive="true"
+            maxSize="5"
+            screenReaderPaginationLabel="Pagination"
+            screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page"
+          >
+            ></pagination-controls
+          >
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noDecks>
+      <div class="col-12 col-xl-5 pt-4">
+        <h5>You don't have any decks yet.</h5>
+        <p>
+          Go to the <a [routerLink]="['/user/decks']">decks page</a> to create a
+          new one.
+        </p>
+      </div>
+    </ng-template>
+
+    <div class="col-12 col-xl-5">
+      <form class="pt-4" [formGroup]="editCardForm" (ngSubmit)="saveChanges()">
+        <h4 class="editCardHeader">Edit Card</h4>
+        <div class="form-group mb-3">
+          <label for="deckId" class="form-label mt-1">Change deck</label>
+          <select
+            class="form-select"
+            id="deckId"
+            name="deckId"
+            formControlName="deckId"
+            [value]="selectedCard ? selectedCard.deckId : null"
+          >
+            <ng-container *ngFor="let deck of user.decks">
+              <option [value]="deck.id">{{ deck.name }}</option>
+            </ng-container>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="front">Front</label>
+          <textarea
+            class="form-control"
+            rows="4"
+            name="front"
+            formControlName="front"
+            [value]="selectedCard ? selectedCard.front : ''"
+          ></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="back">Back</label>
+          <textarea
+            class="form-control"
+            rows="4"
+            name="back"
+            formControlName="back"
+            [value]="selectedCard ? selectedCard.back : ''"
+          ></textarea>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="order">Change Card # / Group #</label>
+          <input
+            type="number"
+            class="form-control"
+            name="order"
+            formControlName="order"
+            [value]="selectedCard ? selectedCard.order : ''"
+          />
+        </div>
+
+        <div class="d-flex pt-3 justify-content-between">
+          <button
+            [disabled]="editCardForm.pristine || !selectedCard"
+            class="btn btn-success"
+            type="submit"
+          >
+            Save changes
+          </button>
+          <button
+            *ngIf="!deleteState"
+            [disabled]="!selectedCard"
+            type="button"
+            class="btn btn-outline-danger deleteBtn"
+            (click)="openDeleteCardModal()"
+          >
+            Delete card
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

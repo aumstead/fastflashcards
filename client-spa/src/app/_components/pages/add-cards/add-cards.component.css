@@ -1,0 +1,37 @@
+.selectBtn {
+  min-width: 9rem;
+}
+
+.cardCount {
+  font-size: 1.25rem;
+  margin-bottom: 0rem;
+}
+
+.unsavedCardCount {
+  font-weight: 600;
+}
+
+.backBtn {
+  margin-left: 1.5rem;
+}
+
+.queueWrapper {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btnSaveAll {
+  margin-top: unset;
+}
+
+@media only screen and (max-width: 550px) {
+  .queueWrapper {
+    flex-direction: column;
+    align-items: unset;
+    justify-content: unset;
+  }
+
+  .btnSaveAll {
+    margin-top: 0.5rem;
+  }
+}

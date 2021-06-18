@@ -1,0 +1,59 @@
+.hero {
+  min-height: 75vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero-info {
+  align-self: center;
+  justify-self: center;
+}
+
+.hero-graphic {
+  width: 30rem;
+  align-self: center;
+  justify-self: center;
+}
+
+.registerBtn {
+  margin-right: 1rem;
+  width: 7rem;
+}
+
+.loginBtn {
+  width: 7rem;
+}
+
+.my-card {
+  height: 20rem;
+  border-color: #c7c7c7;
+  box-shadow: 0px 2px 8px 1px rgb(14 30 37 / 12%);
+}
+
+.demo-deck-btn {
+  color: var(--color-success);
+  text-decoration: underline;
+  border: none;
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 1050px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-info {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .hero-graphic {
+    width: 100%;
+    max-width: 30rem;
+    align-self: center;
+    justify-self: center;
+  }
+}

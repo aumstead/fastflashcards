@@ -1,0 +1,88 @@
+.collapsing {
+  transition: none !important;
+}
+
+.navbar {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.emailNavLink {
+  color: #fff;
+  padding: 0.5rem 2rem;
+  display: block;
+}
+
+.logoutNavLink:hover {
+  cursor: pointer;
+}
+
+.userBtn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.userBtn:hover {
+  color: var(--color-success);
+}
+
+/* mobile styles */
+.mobileUL {
+  list-style: none;
+  padding-left: 0rem;
+  margin-bottom: 0rem;
+  display: none;
+}
+
+.liItem {
+  margin-right: 1.8rem;
+}
+
+.link {
+  color: white;
+  height: 100%;
+  text-decoration: none;
+}
+
+.editCardsSVG {
+  margin-top: -4px;
+}
+
+.hideItemMedium {
+  display: none;
+}
+
+.mobileCollapseBtn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+}
+
+.mobileCollapseBtn:hover {
+  color: var(--color-success);
+}
+
+@media only screen and (max-width: 767px) {
+  .navbar-brand {
+    display: none;
+  }
+
+  .mobileUL {
+    display: flex;
+  }
+
+  .hideItemMobile {
+    display: none;
+  }
+
+  .hideItemMedium {
+    display: unset;
+  }
+
+  .collapseNavbarNav {
+    margin-top: 1rem;
+    text-align: right;
+    font-size: 1rem;
+  }
+}

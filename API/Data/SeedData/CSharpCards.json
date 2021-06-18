@@ -1,0 +1,12 @@
+[
+  {
+    "Order": 1,
+    "Front": "How do interfaces make an application \"loosely-coupled\"?",
+    "Back": "Dependencies are interfaces, so if the implementation needs to change, you can just swap out the class as long as it implements the interface."
+  },
+  {
+    "Order": 2,
+    "Front": "test \n test \\n nuts \r test \\r dick",
+    "Back": "test \n test \\n nuts"
+  }
+]

@@ -1,0 +1,15 @@
+<div class="container m-nav">
+  <h4 class="pt-3">Email Confirmation</h4>
+  <div *ngIf="confirmingEmail">
+    <p>Confirming email...</p>
+  </div>
+  <div *ngIf="confirmed">
+    <p>Thank you for confirming your email address. You are now logged in.</p>
+    <a [routerLink]="['/user/decks']">Get started</a>
+  </div>
+  <div *ngIf="errors.unauthorized">
+    <div class="text-danger">
+      Email confirmation failed. You do not have login access.
+    </div>
+  </div>
+</div>

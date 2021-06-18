@@ -1,0 +1,17 @@
+table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.heading {
+  padding-right: 3rem;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 770px) {
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+  }
+}

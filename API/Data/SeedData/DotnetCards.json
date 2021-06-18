@@ -1,0 +1,87 @@
+[
+  {
+    "Order": 1,
+    "Front": "many to one relationship",
+    "Back": "i.e. Recipe has many ingredients. Ingredients have only one recipe."
+  },
+  {
+    "Order": 2,
+    "Front": "Using .Find() vs .FirstOrDefault() in EF Core",
+    "Back": "Find first checks to see if entity is already being tracked in DbContext. If it is (because the entity was previously loaded in this request), the entity is returned immediately without calling the DB. This is slower if you know the entity is not being tracked."
+  },
+  {
+    "Order": 3,
+    "Front": "concurrency (EF Core)",
+    "Back": "multiple users attempt to update the same entity at the same time. One partial solution is to timestamp columns on entities."
+  },
+  {
+    "Order": 4,
+    "Front": "scaffolding of columns (EF Core)",
+    "Back": "restricting data values. i.e. restricting string length."
+  },
+  {
+    "Order": 5,
+    "Front": "MVC filter pipeline vs Razor Pages filter pipeline",
+    "Back": "Action filter vs Page filters. Page filters execute 3 times. Action filters only twice. Authorization, resource, exception, and result filters are the same."
+  },
+  {
+    "Order": 6,
+    "Front": "Name the different kinds of filters for MVC and RazorPages",
+    "Back": "Authorization, Resource, Action(MVC)/Page(RazorPages), Exception, Result"
+  },
+  {
+    "Order": 7,
+    "Front": "When to use Exception filters?",
+    "Back": "When a single piece of middleware can't handle all exceptions, such as an app that mixes API controllers and Razor Pages. If client is expecting a JSON response and gets HTML instead, it is breaking."
+  },
+  {
+    "Order": 8,
+    "Front": "Required order of auth, routing, and endpoint middlewares?",
+    "Back": "app.UseRouting();\napp.UseAuthentication();\napp.UseAuthorization()\napp.UseEndpoints()"
+  },
+  {
+    "Order": 9,
+    "Front": "What are the two types of responses AuthorizationMiddleware generates?",
+    "Back": "Challenge - user is not authorized because they are not logged in yet. They aren't authenticated.\n\n Forbid - user is logged in but isn't allowed to execute the action. They lack the claim or role, for example."
+  },
+  {
+    "Order": 10,
+    "Front": "Model binding problem with foreach loop.",
+    "Back": "Do not use foreach loops in with model binding in Razor Views. It messes with model binding. For loops allow the unique identifier to be generated, so model binding works properly."
+  },
+  {
+    "Order": 11,
+    "Front": "Why might claims functionality seem to be not working after making a change to a claim on client?",
+    "Back": "Because you have to logout and log back in for changes to go into effect. A new token needs to be issued."
+  },
+  {
+    "Order": 12,
+    "Front": "In ASP.NET Core, a Role is just a Claim with type Role.",
+    "Back": "If you want, you can use policy (i.e. claims) authorization with roles."
+  },
+  {
+    "Order": 13,
+    "Front": "Are claim types or claim values case-sensitive at all?",
+    "Back": "Claim type comparison is case-insensitive, whereas claim value is case-sensitive."
+  },
+  {
+    "Order": 14,
+    "Front": "What are the requirements for this policy to succeed? \n options.AddPolicy(\"EditRolePolicy\", policy => policy.RequireClaim(\"Edit Role\", \"true\", \"yes\").RequireRole(\"Admin\"));\"",
+    "Back": "User must have \"Edit Role\" claim type with a claim value of either \"true\" or \"yes\", AND be in the \"Admin\" role.\" \n There is an \"and\" relationship when chaining in the policy builder. \""
+  },
+  {
+    "Order": 15,
+    "Front": "To create a policy with an either/or type requirement, what method must be called on the policy builder?",
+    "Back": "RequireAssertion"
+  },
+  {
+    "Order": 16,
+    "Front": "What is the order of precedence for custom authorization handler result values?",
+    "Back": "context.Fail() takes precedence over all. If one handler returns a failure, the policy fails, even if other handlers return success. Then context.Succeed(requirement). Then Task.CompletedTask. A handler must explicitly return success in order for a policy to succeed."
+  },
+  {
+    "Order": 17,
+    "Front": "What is the order in which configuration sources are read?",
+    "Back": "1) appsettings.json 2) User Secrets 3)Environment Variables 4) Command-line arguments"
+  }
+]

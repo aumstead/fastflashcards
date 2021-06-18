@@ -1,0 +1,65 @@
+<div class="container m-nav" *ngIf="deck && !finished">
+  <div
+    class="col-12 col-xl-6 pt-3 mx-auto d-flex flex-column studyUserInterface"
+  >
+    <div class="d-flex flex-column mb-2">
+      <h2 class="h6">
+        <a routerLink="/user/decks/{{ deck.id }}">{{ deck.name }}</a>
+      </h2>
+      <div class="d-flex justify-content-between">
+        <button (click)="shuffleDeck()" class="shuffle-btn">
+          Shuffle deck
+        </button>
+        <span>{{ counter + 1 }}/{{ deck.cards.length }}</span>
+      </div>
+    </div>
+
+    <div class="card mb-3 my-card">
+      <div class="card-body">
+        <p class="h4 text-center w-100 whiteSpace">
+          {{
+            shuffleMode
+              ? shuffledDeck.cards[counter].front
+              : deck.cards[counter].front
+          }}
+        </p>
+
+        <div *ngIf="reveal">
+          <hr />
+          <p class="h4 text-center w-100 whiteSpace">
+            {{
+              shuffleMode
+                ? shuffledDeck.cards[counter].back
+                : deck.cards[counter].back
+            }}
+          </p>
+        </div>
+      </div>
+
+      <div class="card-footer d-flex justify-content-center">
+        <button
+          *ngIf="!reveal"
+          type="button"
+          class="btn btn-primary"
+          (click)="toggleReveal()"
+        >
+          Show Answer
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          *ngIf="reveal"
+          (click)="next()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container m-nav" *ngIf="deck && finished">
+  <div class="col-6 pt-4 mx-auto">
+    <h3>Deck Complete</h3>
+  </div>
+</div>

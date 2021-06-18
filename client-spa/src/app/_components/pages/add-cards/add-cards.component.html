@@ -1,0 +1,94 @@
+<div class="container m-nav" *ngIf="user">
+  <h1 class="h2 pt-3">Add Cards</h1>
+  <div class="btn-group mt-3" dropdown>
+    <button
+      id="button-basic"
+      dropdownToggle
+      type="button"
+      class="btn btn-primary dropdown-toggle selectBtn"
+      aria-controls="dropdown-basic"
+      [class.disabled]="user.decks.length === 0"
+    >
+      {{ selectedDeck ? selectedDeck.name : "Select a deck" }}
+      <span class="caret"></span>
+    </button>
+    <ul
+      id="dropdown-basic"
+      *dropdownMenu
+      class="dropdown-menu"
+      role="menu"
+      aria-labelledby="button-basic"
+    >
+      <ng-container *ngFor="let deck of user.decks">
+        <li role="menuitem">
+          <button class="dropdown-item" (click)="selectDeck(deck.id)">
+            {{ deck.name }}
+          </button>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+  <div class="col-12 col-lg-7 col-xl-5" *ngIf="selectedDeck; else noDecks">
+    <p class="text-muted mt-3">
+      Instructions: Add new cards to queue, click 'Save all' to add to database.
+    </p>
+    <p class="cardCount">Total cards: {{ selectedDeck.cards.length }}</p>
+    <div class="d-flex queueWrapper">
+      <p
+        *ngIf="addCardQueue.length > 0"
+        class="text-warning cardCount unsavedCardCount"
+      >
+        Queue (unsaved cards): {{ addCardQueue.length }}
+      </p>
+      <button
+        *ngIf="addCardQueue.length > 0"
+        class="btn btn-warning btnSaveAll"
+        type="button"
+        (click)="saveAllToDatabase()"
+      >
+        Save all
+      </button>
+    </div>
+
+    <form class="mt-4" [formGroup]="addCardForm" (ngSubmit)="addCardToQueue()">
+      <div class="form-group mb-3">
+        <label for="front">Front</label>
+        <textarea
+          class="form-control"
+          rows="4"
+          name="front"
+          formControlName="front"
+        ></textarea>
+      </div>
+      <div class="form-group mb-3">
+        <label for="back">Back</label>
+        <textarea
+          class="form-control"
+          rows="4"
+          name="back"
+          formControlName="back"
+        ></textarea>
+      </div>
+
+      <div class="d-flex pt-3">
+        <button class="btn btn-primary" type="submit">Add to queue</button>
+        <a
+          class="btn btn-outline-secondary d-inline-block backBtn"
+          routerLink="/user/decks/{{ deckId }}"
+          >Back to deck</a
+        >
+      </div>
+    </form>
+  </div>
+
+  <ng-template #noDecks>
+    <div class="col-md-5 pt-4">
+      <h5>You don't have any decks yet.</h5>
+      <p>
+        Go to the <a [routerLink]="['/user/decks']">decks page</a> to create a
+        new one.
+      </p>
+    </div>
+  </ng-template>
+</div>

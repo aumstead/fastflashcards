@@ -1,0 +1,430 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <div class="container">
+    <div
+      *ngIf="!(_accountService.currentUser$ | async)"
+      class="navbar-nav d-md-none"
+    >
+      <a class="navbar-brand-mobile" routerLink="/">
+        <svg
+          width="50"
+          height="40"
+          viewBox="0 0 74 44"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M44.7979 29.6829L10.5324 35.7249C8.42915 36.0957 6.42688 34.4769 6.02051 32.1723L2.74358 13.5879C2.32856 11.2342 3.70888 9.06953 5.76832 8.70639L40.0338 2.66446C42.1371 2.2936 44.1394 3.91238 44.5457 6.21704L47.814 24.7524C48.229 27.1061 46.9012 29.3121 44.7979 29.6829Z"
+            fill="#253544"
+          />
+          <path
+            d="M44.7979 29.6829L10.5324 35.7249C8.42915 36.0957 6.42688 34.4769 6.02051 32.1723L2.74358 13.5879C2.32856 11.2342 3.70888 9.06953 5.76832 8.70639L40.0338 2.66446C42.1371 2.2936 44.1394 3.91238 44.5457 6.21704L47.814 24.7524C48.229 27.1061 46.9012 29.3121 44.7979 29.6829Z"
+            stroke="white"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M55.1147 42.3764H20.3206C18.1849 42.3764 16.4941 40.4345 16.4941 38.0943V19.2233C16.4941 16.8333 18.2294 14.9412 20.3206 14.9412H55.1147C57.2504 14.9412 58.9411 16.883 58.9411 19.2233V38.0445C58.9411 40.4345 57.2504 42.3764 55.1147 42.3764Z"
+            fill="#253544"
+          />
+          <path
+            d="M55.1147 42.3764H20.3206C18.1849 42.3764 16.4941 40.4345 16.4941 38.0943V19.2233C16.4941 16.8333 18.2294 14.9412 20.3206 14.9412H55.1147C57.2504 14.9412 58.9411 16.883 58.9411 19.2233V38.0445C58.9411 40.4345 57.2504 42.3764 55.1147 42.3764Z"
+            stroke="white"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M62.657 40.5176L28.6232 33.2835C26.8581 32.9083 25.7145 30.9685 26.1558 28.8924L30.0793 10.4337C30.5293 8.31673 32.3908 7.05845 34.1194 7.42587L68.1532 14.66C69.9184 15.0352 71.0619 16.975 70.6206 19.051L66.7075 37.461C66.255 39.5896 64.4188 40.892 62.657 40.5176Z"
+            fill="#253544"
+            stroke="black"
+          />
+          <path
+            d="M62.5531 41.0066L28.5193 33.7725C26.4303 33.3285 25.1802 31.0775 25.6667 28.7885L29.5903 10.3298C30.0872 7.99198 32.1779 6.50201 34.2234 6.9368L68.2572 14.1709C70.3462 14.6149 71.5963 16.8659 71.1097 19.155L67.1965 37.565C66.6996 39.9028 64.6421 41.4507 62.5531 41.0066Z"
+            stroke="white"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M38.6509 17.5405L53.8409 20.7693"
+            stroke="white"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M37.6096 22.439L47.6764 24.5787"
+            stroke="white"
+            stroke-width="2"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+    <ul class="mobileUL" *ngIf="_accountService.currentUser$ | async as user">
+      <li class="liItem">
+        <a
+          class="
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-between
+            link
+          "
+          [routerLink]="['/user/decks']"
+        >
+          <svg
+            width="25"
+            height="18"
+            viewBox="0 0 25 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.457 12.6907H2.63053C1.72046 12.6907 1 11.8632 1 10.866L1 2.82468C1 1.80626 1.73942 1 2.63053 1L17.457 1C18.367 1 19.0875 1.82747 19.0875 2.82468V10.8448C19.0875 11.8632 18.367 12.6907 17.457 12.6907Z"
+              fill="#253544"
+            />
+            <path
+              d="M17.457 12.6907H2.63053C1.72046 12.6907 1 11.8632 1 10.866L1 2.82468C1 1.80626 1.73942 1 2.63053 1L17.457 1C18.367 1 19.0875 1.82747 19.0875 2.82468V10.8448C19.0875 11.8632 18.367 12.6907 17.457 12.6907Z"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M19.5876 14.8213H4.76114C3.85108 14.8213 3.13062 13.9938 3.13062 12.9966V4.9553C3.13062 3.93687 3.87004 3.13062 4.76114 3.13062H19.5876C20.4977 3.13062 21.2181 3.95809 21.2181 4.9553V12.9754C21.2181 13.9938 20.4977 14.8213 19.5876 14.8213Z"
+              fill="#253544"
+            />
+            <path
+              d="M19.5876 14.8213H4.76114C3.85108 14.8213 3.13062 13.9938 3.13062 12.9966V4.9553C3.13062 3.93687 3.87004 3.13062 4.76114 3.13062H19.5876C20.4977 3.13062 21.2181 3.95809 21.2181 4.9553V12.9754C21.2181 13.9938 20.4977 14.8213 19.5876 14.8213Z"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M21.8836 16.5H7.05716C6.47819 16.5 5.92664 15.9548 5.92664 15.1753V7.13401C5.92664 6.34131 6.49006 5.80933 7.05716 5.80933H21.8836C22.4626 5.80933 23.0141 6.35459 23.0141 7.13401V15.1541C23.0141 15.9587 22.4591 16.5 21.8836 16.5Z"
+              fill="#253544"
+              stroke="black"
+            />
+            <path
+              d="M21.8836 17H7.05716C6.1471 17 5.42664 16.1726 5.42664 15.1753V7.13401C5.42664 6.11558 6.16606 5.30933 7.05716 5.30933H21.8836C22.7937 5.30933 23.5141 6.1368 23.5141 7.13401V15.1541C23.5141 16.1726 22.7937 17 21.8836 17Z"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10.027 9.07886H16.6444"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10.0269 11.2128H14.4124"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span>Decks</span>
+        </a>
+      </li>
+      <li class="liItem">
+        <a
+          class="
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-between
+            link
+          "
+          routerLink="{{
+            deckId ? '/user/add-cards/' + deckId : '/user/add-cards/'
+          }}"
+        >
+          <svg
+            width="27"
+            height="18"
+            viewBox="0 0 27 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.5232 16.5H3.23155C2.31712 16.5 1.5 15.6497 1.5 14.5027V3.49728C1.5 2.32917 2.33598 1.5 3.23155 1.5H23.5232C24.4376 1.5 25.2547 2.35028 25.2547 3.49728V14.4737C25.2547 15.6537 24.4341 16.5 23.5232 16.5Z"
+              fill="#253544"
+              stroke="black"
+            />
+            <path
+              d="M23.5232 17H3.23155C1.98603 17 1 15.8675 1 14.5027V3.49728C1 2.10345 2.01198 1 3.23155 1H23.5232C24.7687 1 25.7547 2.13249 25.7547 3.49728V14.4737C25.7547 15.8675 24.7687 17 23.5232 17Z"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M13.6038 9.09888H10.1046M13.6038 5.59973V9.09888V5.59973ZM13.6038 9.09888V12.598V9.09888ZM13.6038 9.09888H17.1029H13.6038Z"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span>Add Cards</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-between
+            link
+          "
+          routerLink="{{
+            deckId ? '/user/edit-cards/' + deckId : '/user/edit-cards/'
+          }}"
+        >
+          <svg
+            width="27"
+            height="18"
+            viewBox="0 0 27 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.5232 16.5H3.23155C2.31712 16.5 1.5 15.6497 1.5 14.5027V3.49728C1.5 2.32917 2.33598 1.5 3.23155 1.5H23.5232C24.4376 1.5 25.2547 2.35028 25.2547 3.49728V14.4737C25.2547 15.6537 24.4341 16.5 23.5232 16.5Z"
+              fill="#253544"
+              stroke="black"
+            />
+            <path
+              d="M23.5232 17H3.23155C1.98603 17 1 15.8675 1 14.5027V3.49728C1 2.10345 2.01198 1 3.23155 1H23.5232C24.7687 1 25.7547 2.13249 25.7547 3.49728V14.4737C25.7547 15.8675 24.7687 17 23.5232 17Z"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.7819 5.23769L17.7424 7.19817L15.7819 5.23769ZM16.6135 4.40603C16.8735 4.14605 17.2261 4 17.5938 4C17.9614 4 18.314 4.14605 18.574 4.40603C18.834 4.66601 18.98 5.01861 18.98 5.38627C18.98 5.75394 18.834 6.10654 18.574 6.36652L10.9405 14H9V12.0196L16.6135 4.40603V4.40603Z"
+              stroke="white"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span>Edit Cards</span>
+        </a>
+      </li>
+    </ul>
+    <a class="navbar-brand" routerLink="/">
+      <svg
+        width="50"
+        height="40"
+        viewBox="0 0 74 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M44.7979 29.6829L10.5324 35.7249C8.42915 36.0957 6.42688 34.4769 6.02051 32.1723L2.74358 13.5879C2.32856 11.2342 3.70888 9.06953 5.76832 8.70639L40.0338 2.66446C42.1371 2.2936 44.1394 3.91238 44.5457 6.21704L47.814 24.7524C48.229 27.1061 46.9012 29.3121 44.7979 29.6829Z"
+          fill="#253544"
+        />
+        <path
+          d="M44.7979 29.6829L10.5324 35.7249C8.42915 36.0957 6.42688 34.4769 6.02051 32.1723L2.74358 13.5879C2.32856 11.2342 3.70888 9.06953 5.76832 8.70639L40.0338 2.66446C42.1371 2.2936 44.1394 3.91238 44.5457 6.21704L47.814 24.7524C48.229 27.1061 46.9012 29.3121 44.7979 29.6829Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M55.1147 42.3764H20.3206C18.1849 42.3764 16.4941 40.4345 16.4941 38.0943V19.2233C16.4941 16.8333 18.2294 14.9412 20.3206 14.9412H55.1147C57.2504 14.9412 58.9411 16.883 58.9411 19.2233V38.0445C58.9411 40.4345 57.2504 42.3764 55.1147 42.3764Z"
+          fill="#253544"
+        />
+        <path
+          d="M55.1147 42.3764H20.3206C18.1849 42.3764 16.4941 40.4345 16.4941 38.0943V19.2233C16.4941 16.8333 18.2294 14.9412 20.3206 14.9412H55.1147C57.2504 14.9412 58.9411 16.883 58.9411 19.2233V38.0445C58.9411 40.4345 57.2504 42.3764 55.1147 42.3764Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M62.657 40.5176L28.6232 33.2835C26.8581 32.9083 25.7145 30.9685 26.1558 28.8924L30.0793 10.4337C30.5293 8.31673 32.3908 7.05845 34.1194 7.42587L68.1532 14.66C69.9184 15.0352 71.0619 16.975 70.6206 19.051L66.7075 37.461C66.255 39.5896 64.4188 40.892 62.657 40.5176Z"
+          fill="#253544"
+          stroke="black"
+        />
+        <path
+          d="M62.5531 41.0066L28.5193 33.7725C26.4303 33.3285 25.1802 31.0775 25.6667 28.7885L29.5903 10.3298C30.0872 7.99198 32.1779 6.50201 34.2234 6.9368L68.2572 14.1709C70.3462 14.6149 71.5963 16.8659 71.1097 19.155L67.1965 37.565C66.6996 39.9028 64.6421 41.4507 62.5531 41.0066Z"
+          stroke="white"
+          stroke-width="2"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M38.6509 17.5405L53.8409 20.7693"
+          stroke="white"
+          stroke-width="2"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M37.6096 22.439L47.6764 24.5787"
+          stroke="white"
+          stroke-width="2"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+    <button
+      class="navbar-toggler collapsed"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul
+        class="navbar-nav me-auto collapseNavbarNav"
+        *ngIf="_accountService.currentUser$ | async as user"
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link hideItemMobile"
+            [routerLink]="['/user/decks']"
+            routerLinkActive="router-link-active"
+            >Decks</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link hideItemMobile"
+            routerLink="{{
+              deckId ? '/user/add-cards/' + deckId : '/user/add-cards/'
+            }}"
+            routerLinkActive="router-link-active"
+            >Add Cards</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link hideItemMobile"
+            routerLink="{{
+              deckId ? '/user/edit-cards/' + deckId : '/user/edit-cards/'
+            }}"
+            routerLinkActive="router-link-active"
+            >Edit Cards</a
+          >
+        </li>
+        <li class="nav-item hideItemMedium">
+          <a
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            class="nav-link"
+            routerLink="/user/account-settings"
+            routerLinkActive="router-link-active"
+            >Account Settings</a
+          >
+        </li>
+        <li class="nav-item hideItemMedium">
+          <button
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            class="mobileCollapseBtn"
+            (click)="logout()"
+          >
+            Logout
+          </button>
+        </li>
+        <li class="nav-item">
+          <a
+            *appHasClaim="['IsAdmin']"
+            class="nav-link"
+            routerLink="/admin"
+            routerLinkActive="router-link-active"
+            >Admin</a
+          >
+        </li>
+      </ul>
+
+      <div
+        class="btn-group hideItemMobile"
+        *ngIf="_accountService.currentUser$ | async as user"
+        dropdown
+      >
+        <button
+          id="button-basic"
+          dropdownToggle
+          type="button"
+          class="dropdown-toggle userBtn"
+          aria-controls="dropdown-basic"
+        >
+          {{ user.email }}
+          <span class="caret"></span>
+        </button>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu dropdown-menu-right"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem">
+            <a class="dropdown-item" routerLink="/user/account-settings"
+              >Account Settings</a
+            >
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem">
+            <button class="dropdown-item" (click)="logout()">Logout</button>
+          </li>
+        </ul>
+      </div>
+
+      <ul
+        *ngIf="!(_accountService.currentUser$ | async)"
+        class="navbar-nav collapseNavbarNav"
+      >
+        <li class="nav-item">
+          <a
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            class="nav-link"
+            [routerLink]="['/register']"
+            routerLinkActive="router-link-active"
+            >Register</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            data-toggle="collapse"
+            data-target="#navbarCollapse"
+            class="nav-link"
+            [routerLink]="['/login']"
+            routerLinkActive="router-link-active"
+            >Login</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

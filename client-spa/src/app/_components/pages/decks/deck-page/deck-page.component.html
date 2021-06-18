@@ -1,0 +1,80 @@
+<div class="container m-nav" *ngIf="deck; else noDeck">
+  <div class="col-12 col-xl-6">
+    <h1 class="h2 pt-3">{{ deck.name }}</h1>
+
+    <p class="h5 mt-3">Total cards: {{ deck.cards.length }}</p>
+    <p class="text-muted mt-3" *ngIf="deck.cards.length === 0">
+      Add cards to your deck!
+    </p>
+    <div class="d-flex mt-4">
+      <a
+        [class.disableLink]="deck.cards.length === 0"
+        routerLink="/user/decks/{{ deck.id }}/study"
+        class="btn btn-success d-inline-block btn-margin"
+        >Study Now</a
+      >
+      <div class="btn-group" dropdown>
+        <button
+          id="button-basic"
+          dropdownToggle
+          type="button"
+          class="btn btn-secondary dropdown-toggle"
+          aria-controls="dropdown-basic"
+        >
+          Options
+          <span class="caret"></span>
+        </button>
+        <ul
+          id="dropdown-basic"
+          *dropdownMenu
+          class="dropdown-menu"
+          role="menu"
+          aria-labelledby="button-basic"
+        >
+          <li role="menuitem">
+            <a
+              class="dropdown-item secondaryDropdown"
+              routerLink="/user/add-cards/{{ deck.id }}"
+              >Add Cards</a
+            >
+          </li>
+          <li role="menuitem">
+            <a
+              class="dropdown-item secondaryDropdown"
+              routerLink="/user/edit-cards/{{ deck.id }}"
+              >Edit Cards</a
+            >
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem">
+            <button
+              class="dropdown-item secondaryDropdown"
+              (click)="openEditDeckNameModal()"
+            >
+              Edit Deck Name
+            </button>
+          </li>
+          <li role="menuitem">
+            <button
+              class="dropdown-item secondaryDropdown"
+              (click)="openDeleteDeckModal()"
+            >
+              Delete Deck
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noDeck>
+  <div class="container m-nav">
+    <div class="col-5 pt-4">
+      <h5>Deck not found.</h5>
+      <a class="btn btn-secondary mt-3" [routerLink]="['/user/decks']"
+        >Return to decks</a
+      >
+    </div>
+  </div>
+</ng-template>
