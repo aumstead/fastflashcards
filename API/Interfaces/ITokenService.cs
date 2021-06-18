@@ -11,6 +11,6 @@ namespace API.Interfaces
     public interface ITokenService
     {
         Task<string> CreateToken(AppUser user);
-        Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(GoogleAuthDTO googleAuthDTO);
+        //Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(GoogleAuthDTO googleAuthDTO);
     }
 }

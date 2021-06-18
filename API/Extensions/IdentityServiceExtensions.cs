@@ -38,12 +38,12 @@ namespace API.Extensions
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
-                })
-                .AddGoogle(options =>
-                {
-                    options.ClientId = config.GetValue<string>("GoogleClientId");
-                    options.ClientSecret = config.GetValue<string>("GoogleClientSecret");
                 });
+                //.AddGoogle(options =>
+                //{
+                //    options.ClientId = config.GetValue<string>("GoogleClientId");
+                //    options.ClientSecret = config.GetValue<string>("GoogleClientSecret");
+                //});
 
             services.AddAuthorization(options =>
             {

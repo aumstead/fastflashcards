@@ -20,13 +20,13 @@ namespace API.Services
     {
         private readonly SymmetricSecurityKey _key;
         private readonly UserManager<AppUser> _userManager;
-        private readonly string _googleClientId;
+        //private readonly string _googleClientId;
 
         public TokenService(IConfiguration config, UserManager<AppUser> userManager)
         {
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
             _userManager = userManager;
-            _googleClientId = config["GoogleClientId"];
+            //_googleClientId = config["GoogleClientId"];
         }
 
         public async Task<string> CreateToken(AppUser user)
@@ -52,24 +52,24 @@ namespace API.Services
             return tokenHandler.WriteToken(token);
         }
 
-        public async Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(GoogleAuthDTO googleAuthDTO)
-        {
-            try
-            {
-                var settings = new GoogleJsonWebSignature.ValidationSettings()
-                {
-                    Audience = new List<string>() { _googleClientId }
-                };
+        //public async Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(GoogleAuthDTO googleAuthDTO)
+        //{
+        //    try
+        //    {
+        //        var settings = new GoogleJsonWebSignature.ValidationSettings()
+        //        {
+        //            Audience = new List<string>() { _googleClientId }
+        //        };
 
-                var payload = await GoogleJsonWebSignature.ValidateAsync(googleAuthDTO.IdToken, settings);
-                return payload;
-            }
-            catch (Exception ex)
-            {
-                //log an exception
-                return null;
-            }
-        }
+        //        var payload = await GoogleJsonWebSignature.ValidateAsync(googleAuthDTO.IdToken, settings);
+        //        return payload;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //log an exception
+        //        return null;
+        //    }
+        //}
     }
 }
 

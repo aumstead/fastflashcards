@@ -149,59 +149,59 @@ namespace API.Controllers
         }
 
         //code-maze tutorial
-        [HttpPost("ExternalGoogleLogin")]
-        public async Task<ActionResult<LoggedInUserDTO>> ExternalGoogleLogin([FromBody] GoogleAuthDTO googleAuthDTO)
-        {
-            var payload = await _tokenService.VerifyGoogleToken(googleAuthDTO);
-            if (payload == null)
-                return BadRequest("Invalid External Authentication.");
+        //[HttpPost("ExternalGoogleLogin")]
+        //public async Task<ActionResult<LoggedInUserDTO>> ExternalGoogleLogin([FromBody] GoogleAuthDTO googleAuthDTO)
+        //{
+        //    var payload = await _tokenService.VerifyGoogleToken(googleAuthDTO);
+        //    if (payload == null)
+        //        return BadRequest("Invalid External Authentication.");
 
-            var info = new UserLoginInfo(googleAuthDTO.Provider, payload.Subject, googleAuthDTO.Provider);
+        //    var info = new UserLoginInfo(googleAuthDTO.Provider, payload.Subject, googleAuthDTO.Provider);
 
-            var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
-            if (user == null)
-            {
-                user = await _userManager.FindByEmailAsync(payload.Email);
+        //    var user = await _userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
+        //    if (user == null)
+        //    {
+        //        user = await _userManager.FindByEmailAsync(payload.Email);
 
-                if (user == null)
-                {
-                    user = new AppUser()
-                    {
-                        Email = payload.Email.ToLower(),
-                        UserName = payload.Email.ToLower()
-                    };
+        //        if (user == null)
+        //        {
+        //            user = new AppUser()
+        //            {
+        //                Email = payload.Email.ToLower(),
+        //                UserName = payload.Email.ToLower()
+        //            };
 
-                    await _userManager.CreateAsync(user);
+        //            await _userManager.CreateAsync(user);
 
-                    //prepare and send an email for the email confirmation
-                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        //            //prepare and send an email for the email confirmation
+        //            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    var baseUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+        //            var baseUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
 
-                    var confirmationLink = $"{baseUrl}/register/confirm-email/?userId={user.Id}&token={token}";
+        //            var confirmationLink = $"{baseUrl}/register/confirm-email/?userId={user.Id}&token={token}";
 
-                    _logger.Log(LogLevel.Warning, confirmationLink);
+        //            _logger.Log(LogLevel.Warning, confirmationLink);
 
-                    await _userManager.AddLoginAsync(user, info);
+        //            await _userManager.AddLoginAsync(user, info);
 
-                    return new LoggedInUserDTO { Id = user.Id, Email = user.Email };
-                }
-                else
-                {
-                    await _userManager.AddLoginAsync(user, info);
-                }
-            }
+        //            return new LoggedInUserDTO { Id = user.Id, Email = user.Email };
+        //        }
+        //        else
+        //        {
+        //            await _userManager.AddLoginAsync(user, info);
+        //        }
+        //    }
 
-            if (user == null)
-                return BadRequest("Invalid Google Authentication.");
+        //    if (user == null)
+        //        return BadRequest("Invalid Google Authentication.");
 
-            //check for the Locked out account
-            var isEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
+        //    //check for the Locked out account
+        //    var isEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
 
-            if (!isEmailConfirmed) return Unauthorized(new { source = "login", type = "confirm email" });
+        //    if (!isEmailConfirmed) return Unauthorized(new { source = "login", type = "confirm email" });
 
-            return new LoggedInUserDTO { Id = user.Id, Email = user.Email.ToLower(), Token = await _tokenService.CreateToken(user) };
-        }
+        //    return new LoggedInUserDTO { Id = user.Id, Email = user.Email.ToLower(), Token = await _tokenService.CreateToken(user) };
+        //}
 
         [HttpPost("ForgotPassword")]
         public async Task<IActionResult> ForgotPassword(string email)
