@@ -7,9 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GoogleAuthDto } from 'src/app/_models/googleAuthDTO';
 import { AccountService } from 'src/app/_services/account.service';
-import { SocialUser } from 'angularx-social-login';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -68,31 +66,5 @@ export class RegisterComponent implements OnInit {
         ? null
         : { isMatching: true };
     };
-  }
-
-  externalGoogleRegister() {
-    this._accountService.signInWithGoogle().then(
-      (res) => {
-        const user: SocialUser = { ...res };
-        const externalAuth: GoogleAuthDto = {
-          provider: user.provider,
-          idToken: user.idToken,
-        };
-        this.validateGoogleAuth(externalAuth);
-      },
-      (error) => console.log(error)
-    );
-  }
-
-  validateGoogleAuth(externalAuth: GoogleAuthDto) {
-    this._accountService.validateGoogleRegister(externalAuth).subscribe(
-      (res) => {
-        console.log('register, subscribe, res:', res);
-        this._router.navigateByUrl(`/register/success/${res.email}`);
-      },
-      (error) => {
-        console.log('in validateGoogleAuth error:', error);
-      }
-    );
   }
 }

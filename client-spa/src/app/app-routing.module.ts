@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountSettingsComponent } from './_components/pages/account-settings/account-settings.component';
-import { AddPasswordSuccessComponent } from './_components/pages/account-settings/add-password-success/add-password-success.component';
-import { AddPasswordComponent } from './_components/pages/account-settings/add-password/add-password.component';
 import { ChangePasswordSuccessComponent } from './_components/pages/account-settings/change-password/change-password-success/change-password-success.component';
 import { ChangePasswordComponent } from './_components/pages/account-settings/change-password/change-password.component';
 import { AddCardsComponent } from './_components/pages/add-cards/add-cards.component';
@@ -65,14 +63,6 @@ const routes: Routes = [
       {
         path: 'user/account-settings/change-password/success',
         component: ChangePasswordSuccessComponent,
-      },
-      {
-        path: 'user/account-settings/add-password',
-        component: AddPasswordComponent,
-      },
-      {
-        path: 'user/account-settings/add-password/success',
-        component: AddPasswordSuccessComponent,
       },
     ],
   },

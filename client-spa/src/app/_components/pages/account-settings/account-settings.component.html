@@ -7,19 +7,11 @@
     </tr>
     <tr class="tableRow">
       <th class="heading text-muted">Password:</th>
-      <td *ngIf="userHasPassword !== undefined">
-        <a
-          *ngIf="userHasPassword"
-          routerLink="/user/account-settings/change-password"
+      <td>
+        <a routerLink="/user/account-settings/change-password"
           >Change password</a
         >
-        <a
-          *ngIf="!userHasPassword"
-          routerLink="/user/account-settings/add-password"
-          >Add password</a
-        >
       </td>
-      <td *ngIf="userHasPassword === undefined">Checking password status...</td>
     </tr>
   </table>
 </div>

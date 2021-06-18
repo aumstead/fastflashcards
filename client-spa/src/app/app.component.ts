@@ -22,9 +22,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.setCurrentUser();
     if (this.swUpdate.isEnabled) {
-      console.log('in swUpdate.isEnabled');
       this.swUpdate.available.subscribe(() => {
-        console.log('in swUpdate.available subscription');
         this.openUpdateModal();
       });
     }
@@ -38,7 +36,6 @@ export class AppComponent {
   }
 
   openUpdateModal() {
-    console.log('in openUpdateModal');
     this.bsModalRef = this._modalService.show(UpdateSwModalComponent);
   }
 }

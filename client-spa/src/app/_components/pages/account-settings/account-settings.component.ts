@@ -25,7 +25,6 @@ export class AccountSettingsComponent implements OnInit {
     this._titleService.setTitle(`Account Settings | FastFlashCards.com`);
     this.getLoggedInUser();
     this.loadUser();
-    this.hasPassword();
   }
 
   loadUser() {
@@ -38,13 +37,6 @@ export class AccountSettingsComponent implements OnInit {
   getLoggedInUser() {
     this._accountService.currentUser$.subscribe((user) => {
       this.loggedInUser = user;
-    });
-  }
-
-  hasPassword() {
-    return this._accountService.hasPassword().subscribe((res) => {
-      this.userHasPassword = res;
-      console.log('this.userHasPassword:', this.userHasPassword);
     });
   }
 }

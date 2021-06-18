@@ -29,14 +29,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './_components/pages/not-found/not-found.component';
 import { AdminComponent } from './_components/pages/admin/admin.component';
 import { HasClaimDirective } from './_directives/has-claim.directive';
-import {
-  SocialLoginModule,
-  SocialAuthServiceConfig,
-} from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from 'angularx-social-login';
 import { SuccessComponent } from './_components/pages/register/success/success.component';
 import { ConfirmEmailComponent } from './_components/pages/register/confirm-email/confirm-email.component';
 import { ForgotPasswordComponent } from './_components/pages/login/forgot-password/forgot-password.component';
@@ -46,8 +38,6 @@ import { ResetPasswordConfirmationComponent } from './_components/pages/reset-pa
 import { AccountSettingsComponent } from './_components/pages/account-settings/account-settings.component';
 import { ChangePasswordComponent } from './_components/pages/account-settings/change-password/change-password.component';
 import { ChangePasswordSuccessComponent } from './_components/pages/account-settings/change-password/change-password-success/change-password-success.component';
-import { AddPasswordComponent } from './_components/pages/account-settings/add-password/add-password.component';
-import { AddPasswordSuccessComponent } from './_components/pages/account-settings/add-password-success/add-password-success.component';
 import { ServerErrorComponent } from './_components/pages/server-error/server-error.component';
 import { DeleteCardModalComponent } from './_components/pages/edit-cards/delete-card-modal/delete-card-modal.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -82,8 +72,6 @@ import { UpdateSwModalComponent } from './_components/update-sw-modal/update-sw-
     AccountSettingsComponent,
     ChangePasswordComponent,
     ChangePasswordSuccessComponent,
-    AddPasswordComponent,
-    AddPasswordSuccessComponent,
     ServerErrorComponent,
     DeleteCardModalComponent,
     UpdateSwModalComponent,
@@ -102,7 +90,6 @@ import { UpdateSwModalComponent } from './_components/update-sw-modal/update-sw-
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-left',
     }),
-    SocialLoginModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -114,20 +101,6 @@ import { UpdateSwModalComponent } from './_components/update-sw-modal/update-sw-
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '740612505813-2b60rgahkp6f4h0mq06hekgpnravobha.apps.googleusercontent.com'
-            ),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    },
   ],
   bootstrap: [AppComponent],
 })

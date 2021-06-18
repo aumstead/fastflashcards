@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GoogleAuthDto } from 'src/app/_models/googleAuthDTO';
 import { AccountService } from 'src/app/_services/account.service';
-import { SocialUser } from 'angularx-social-login';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -73,46 +71,5 @@ export class LoginComponent implements OnInit {
       ],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-  }
-
-  externalGoogleLogin() {
-    this.errors = {
-      email: false,
-      password: false,
-      confirmEmail: false,
-      loadingProviders: false,
-    };
-    this._accountService.signInWithGoogle().then(
-      (res) => {
-        const user: SocialUser = { ...res };
-        const externalAuth: GoogleAuthDto = {
-          provider: user.provider,
-          idToken: user.idToken,
-        };
-        this.validateGoogleAuth(externalAuth);
-      },
-      (error) => {
-        console.log('in externalGoogleLogin error:', error);
-        this.errors.loadingProviders = true;
-      }
-    );
-  }
-
-  validateGoogleAuth(externalAuth: GoogleAuthDto) {
-    this._accountService.validateGoogleLogin(externalAuth).subscribe(
-      (res) => {
-        console.log('login, subscribe, res:', res);
-        // localStorage.setItem("token", res.token);
-        // this._accountService.sendAuthStateChangeNotification(res.isAuthSuccessful);
-        this._router.navigate([this.returnUrl]);
-      },
-      (error) => {
-        console.log('in validateGoogleAuth error:', error);
-        if (error.error.type === 'confirm email') {
-          this.errors.confirmEmail = true;
-        }
-        this._accountService.signOutExternal();
-      }
-    );
   }
 }
