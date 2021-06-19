@@ -4,6 +4,9 @@
   box-shadow: 0px 2px 8px 1px rgb(14 30 37 / 12%);
 }
 
+.studyUserInterface {
+  max-width: 45rem;
+}
 /* .next-btn {
   right: 1rem;
 } */
@@ -23,6 +26,25 @@
 .whiteSpace {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+.deckCompleteCard {
+  display: flex;
+  align-items: center;
+  padding-top: 4rem;
+}
+
+.goToForm {
+  float: right;
+}
+
+.goToCardInput {
+  width: 3rem;
+  margin-left: 0.5rem;
+}
+
+.goToCardWrapper {
+  max-width: 45rem;
 }
 
 @media only screen and (max-width: 550px) {

@@ -49,7 +49,6 @@ export class DeckPageComponent implements OnInit {
       });
     } else {
       this._deckService.getDeckById(this.deckId).subscribe((deck: Deck) => {
-        console.log('in else, meaning we have a cache. returned deck:', deck);
         this.deck = deck;
       });
     }

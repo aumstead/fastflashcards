@@ -30,7 +30,6 @@ export class AccountSettingsComponent implements OnInit {
   loadUser() {
     this._userService.getUser(this.loggedInUser.id).subscribe((user) => {
       this.user = user;
-      console.log('user in account settings', this.user);
     });
   }
 

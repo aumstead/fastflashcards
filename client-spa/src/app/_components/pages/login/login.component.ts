@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
         this._router.navigateByUrl('/user/decks');
       },
       (error) => {
-        console.log('in login error:', error);
         if (error.error.type === 'email') {
           this.errors.email = true;
         } else if (error.error.type === 'password') {

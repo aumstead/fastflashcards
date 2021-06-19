@@ -1,4 +1,4 @@
-<div class="container m-nav" *ngIf="deck && !finished">
+<div class="container m-nav" *ngIf="deck">
   <div
     class="col-12 col-xl-6 pt-3 mx-auto d-flex flex-column studyUserInterface"
   >
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="card mb-3 my-card">
+    <div class="card mb-3 my-card" *ngIf="deck && !finished">
       <div class="card-body">
         <p class="h4 text-center w-100 whiteSpace">
           {{
@@ -55,11 +55,30 @@
         </button>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="container m-nav" *ngIf="deck && finished">
-  <div class="col-6 pt-4 mx-auto">
-    <h3>Deck Complete</h3>
+    <div class="card mb-3 my-card deckCompleteCard" *ngIf="deck && finished">
+      <h3>Deck Complete</h3>
+
+      <button class="btn btn-success mt-2" (click)="restartDeck()">
+        Restart Deck
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-xl-6 mx-auto goToCardWrapper">
+    <form
+      [formGroup]="goToCardForm"
+      class="d-flex flex-column goToForm"
+      (submit)="goToCardForm.valid && goToCardHandler()"
+    >
+      <div>
+        <label for="cardNumber">Go to card</label>
+        <input
+          class="goToCardInput"
+          name="cardNumber"
+          type="number"
+          formControlName="cardNumber"
+        />
+      </div>
+    </form>
   </div>
 </div>

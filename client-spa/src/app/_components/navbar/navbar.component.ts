@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit {
 
   getCurrentDeckId() {
     this._deckService.currentDeckId$.subscribe((deckId) => {
-      console.log('navbar, deckId changed', deckId);
       this.deckId = deckId;
     });
   }

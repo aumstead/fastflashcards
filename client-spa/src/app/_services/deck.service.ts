@@ -37,11 +37,9 @@ export class DeckService {
     );
 
     if (deckFromCache) {
-      console.log('using deckFromCache');
       return of(deckFromCache);
     }
 
-    console.log('hitting fail-safe');
     return this._http.get(`${this.baseUrl}/deck?id=${id}`);
   }
 

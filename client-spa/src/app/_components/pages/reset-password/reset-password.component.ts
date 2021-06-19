@@ -74,7 +74,6 @@ export class ResetPasswordComponent implements OnInit {
     };
     this._accountService.resetPassword(dto).subscribe(
       (response) => {
-        console.log('reset password sub response:', response);
         this._router.navigateByUrl(`/reset-password/success`);
       },
       (error) => {

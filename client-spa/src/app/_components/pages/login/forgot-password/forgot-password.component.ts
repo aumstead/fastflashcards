@@ -51,11 +51,10 @@ export class ForgotPasswordComponent implements OnInit {
       .forgotPassword(this.forgotPasswordForm.get('email').value)
       .subscribe(
         (response) => {
-          console.log('forgot-password component', response);
           this._router.navigateByUrl('/login/forgot-password-confirmation');
         },
         (error) => {
-          console.log('forgot pass error', error);
+          console.error(error);
         }
       );
   }

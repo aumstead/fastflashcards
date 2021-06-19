@@ -37,13 +37,12 @@ export class AccountService {
           // users are now not automatically logged in. they must confirm email address.
           return user;
         },
-        (error) => console.log(error)
+        (error) => console.error(error)
       )
     );
   }
 
   confirmEmail(userId: string, token: string) {
-    console.log('account service token:', token);
     return this._http
       .get(
         `${this.baseUrl}/account/confirm-email?userId=${userId}&token=${token}`
@@ -80,29 +79,20 @@ export class AccountService {
   }
 
   forgotPassword(email: string) {
-    console.log('acct service email:', email);
     return this._http
       .post(`${this.baseUrl}/account/ForgotPassword?email=${email}`, {})
-      .pipe(
-        map((response: any) => {
-          console.log('account service pipe response:', response);
-        })
-      );
+      .pipe(map((response: any) => {}));
   }
 
   resetPassword(dto: ResetPasswordDTO) {
-    return this._http.post(`${this.baseUrl}/account/ResetPassword`, dto).pipe(
-      map((response: any) => {
-        console.log('account service pipe response:', response);
-      })
-    );
+    return this._http
+      .post(`${this.baseUrl}/account/ResetPassword`, dto)
+      .pipe(map((response: any) => {}));
   }
 
   changePassword(dto: ChangePasswordDTO) {
-    return this._http.post(`${this.baseUrl}/account/ChangePassword`, dto).pipe(
-      map((response: any) => {
-        console.log('account service pipe response:', response);
-      })
-    );
+    return this._http
+      .post(`${this.baseUrl}/account/ChangePassword`, dto)
+      .pipe(map((response: any) => {}));
   }
 }

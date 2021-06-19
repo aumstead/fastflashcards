@@ -20,7 +20,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((error) => {
-        console.log('in catchError:', error);
         if (error) {
           switch (error.status) {
             case 400:
@@ -53,7 +52,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 }
                 throw modelStateErrors.flat();
               } else {
-                console.log('error in 400 else block');
+                console.error('error in 400 else block', error);
               }
               break;
 
@@ -64,7 +63,6 @@ export class ErrorInterceptor implements HttpInterceptor {
                 break;
               } else if (error.error?.source === 'confirm-email') {
                 // handle error in confirm-email component
-                console.log('in case 401 else if');
                 break;
               } else {
                 this._toastr.error('Unauthorized', error.status);

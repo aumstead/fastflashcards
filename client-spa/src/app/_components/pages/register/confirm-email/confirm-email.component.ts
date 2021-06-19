@@ -29,7 +29,6 @@ export class ConfirmEmailComponent implements OnInit {
     this.confirmingEmail = true;
     this.userId = this._route.snapshot.queryParamMap.get('userId');
     this.token = this._route.snapshot.queryParamMap.get('token');
-    console.log('confirm-email token', this.token);
     this._accountService.confirmEmail(this.userId, this.token).subscribe(
       (response) => {
         this.confirmingEmail = false;
@@ -37,7 +36,6 @@ export class ConfirmEmailComponent implements OnInit {
         // this._router.navigateByUrl('/user/decks');
       },
       (error) => {
-        console.log('in confirm-email error:', error);
         this.confirmingEmail = false;
         this.confirmed = false;
         if (error.error.type === 'email not confirmed') {

@@ -3,7 +3,13 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Deck } from 'src/app/_models/deck';
 import { DeckService } from 'src/app/_services/deck.service';
-import { DeckPageComponent } from '../deck-page/deck-page.component';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-study',
@@ -17,6 +23,9 @@ export class StudyComponent implements OnInit {
   reveal: Boolean = false;
   finished: Boolean = false;
 
+  // goToCardForm
+  goToCardForm: FormGroup;
+
   // shuffle mode
   shuffleMode = false;
   shuffledDeck = {
@@ -26,6 +35,7 @@ export class StudyComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _titleService: Title,
+    private _fb: FormBuilder,
     private _deckService: DeckService
   ) {}
 
@@ -34,6 +44,7 @@ export class StudyComponent implements OnInit {
     this.deckId = parseInt(this._route.snapshot.paramMap.get('id'));
     this._deckService.getDeckById(this.deckId).subscribe((deck: Deck) => {
       this.deck = deck;
+      this.initializeForm();
     });
   }
 
@@ -61,7 +72,31 @@ export class StudyComponent implements OnInit {
       this.shuffledDeck.cards[j] = temp;
     }
     this.shuffleMode = true;
-    console.log('deck', this.deck.cards);
-    console.log('shuffled deck', this.shuffledDeck.cards);
+  }
+
+  restartDeck() {
+    this.finished = false;
+    this.counter = 0;
+  }
+
+  goToCardHandler() {
+    this.counter = this.goToCardForm.get('cardNumber').value - 1;
+    this.goToCardForm.reset();
+  }
+
+  initializeForm() {
+    this.goToCardForm = this._fb.group({
+      cardNumber: [
+        '',
+        [
+          Validators.min(1),
+          Validators.max(this.deck.cards.length),
+          Validators.required,
+        ],
+      ],
+    });
+    // this.goToCardForm.controls.cardNumber.valueChanges.subscribe(() => {
+    //   this.goToCardForm.controls.confirmPassword.updateValueAndValidity();
+    // });
   }
 }
