@@ -1,7 +1,6 @@
 ﻿using API.Data;
 using API.Data.Repository;
 using API.Data.Repository.IRepository;
-using API.Email;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -58,8 +57,11 @@ namespace API.Extensions
                 options.UseNpgsql(connStr);
             });
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddHttpClient();
+            //services
+            //   .AddFluentEmail("tech@fastflashcards.com")
+            //   .AddSmtpSender("smtp-pulse.com", 465, "andrew.umstead@gmail.com", "FpBoJTPSoTCH", );
 
             return services;
         }

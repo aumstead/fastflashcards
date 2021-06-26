@@ -1,5 +1,4 @@
 ﻿using API.DTOs;
-using API.Email;
 using API.Entities;
 using API.Interfaces;
 using FluentEmail.Core;
@@ -10,10 +9,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
@@ -26,15 +28,17 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly ILogger<AccountController> _logger;
-        private readonly IEmailService _emailService;
+        private readonly IHttpClientFactory _factory;
+        private readonly string _sendPulsePassword;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, ILogger<AccountController> logger, IEmailService emailService)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, ILogger<AccountController> logger, IHttpClientFactory factory, IConfiguration config)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _logger = logger;
-            _emailService = emailService;
+            _factory = factory;
+            _sendPulsePassword = config["EmailConfigPassword"];
         }
 
         [HttpPost("register")]
@@ -59,22 +63,31 @@ namespace API.Controllers
             var confirmationLink = $"{baseUrl}/register/confirm-email/?userId={user.Id}&token={token}";
 
             // send email
-            // fluent email
-            //var sender = new SmtpSender(() => new SmtpClient("localhost")
-            //{
-            //    EnableSsl = false,
-            //    DeliveryMethod = SmtpDeliveryMethod.Network,
-            //    Port = 25
-            //});
+            var sender = new SmtpSender(() => new SmtpClient("smtp-pulse.com")
+            {
+                UseDefaultCredentials = false,
+                Port = 587,
+                Credentials = new NetworkCredential("andrew.umstead@gmail.com", _sendPulsePassword),
+                EnableSsl = false
+            });
 
-            //FluentEmail.Core.Email.DefaultSender = sender;
+            Email.DefaultSender = sender;
 
-            //var email = await FluentEmail.Core.Email
-            //    .From("admin@freeflashcards.com")
-            //    .To("test@test.com")
-            //    .Subject("confirmation email from free flash cards .com")
-            //    .Body("click the link nub")
-            //    .SendAsync();
+            var email = new Email()
+                .SetFrom("tech@fastflashcards.com")
+                    .To("andrew.umstead@gmail.com", "Andrew")
+                    .Subject("Email example")
+                    .Body("Email body");
+
+            try
+            {              
+                await email.SendAsync();
+            }
+            catch
+            {
+                var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the confirmation email." });
+                return errorResult;
+            }
 
 
             // mailkit code-maze tutorial
@@ -89,10 +102,12 @@ namespace API.Controllers
             //    return errorResult;
             //}
 
-            _logger.Log(LogLevel.Warning, confirmationLink);
+            //_logger.Log(LogLevel.Warning, confirmationLink);
 
             return new LoggedInUserDTO { Id = user.Id, Email = user.Email };
         }
+
+
 
         [HttpGet("confirm-email")]
         public async Task<ActionResult<LoggedInUserDTO>> ConfirmEmail(string userId, string token)
