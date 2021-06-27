@@ -1,5 +1,6 @@
 ﻿using API.DTOs;
 using API.Entities;
+using API.Extensions;
 using API.Interfaces;
 using FluentEmail.Core;
 using FluentEmail.Smtp;
@@ -11,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +31,17 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly ILogger<AccountController> _logger;
-        private readonly IHttpClientFactory _factory;
-        private readonly string _sendPulsePassword;
+        private readonly IFluentEmail _mailer;
+        private readonly IMailService _mailService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, ILogger<AccountController> logger, IHttpClientFactory factory, IConfiguration config)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, ILogger<AccountController> logger, IConfiguration config, IFluentEmail mailer, IMailService mailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
             _logger = logger;
-            _factory = factory;
-            _sendPulsePassword = config["EmailConfigPassword"];
+            _mailer = mailer;
+            _mailService = mailService;
         }
 
         [HttpPost("register")]
@@ -63,46 +66,15 @@ namespace API.Controllers
             var confirmationLink = $"{baseUrl}/register/confirm-email/?userId={user.Id}&token={token}";
 
             // send email
-            var sender = new SmtpSender(() => new SmtpClient("smtp-pulse.com")
-            {
-                UseDefaultCredentials = false,
-                Port = 587,
-                Credentials = new NetworkCredential("andrew.umstead@gmail.com", _sendPulsePassword),
-                EnableSsl = false
-            });
-
-            Email.DefaultSender = sender;
-
-            var email = new Email()
-                .SetFrom("tech@fastflashcards.com")
-                    .To("andrew.umstead@gmail.com", "Andrew")
-                    .Subject("Email example")
-                    .Body("Email body");
-
             try
-            {              
-                await email.SendAsync();
+            {
+                _mailService.SendHTMLSendGrid(user.Email, confirmationLink, "Email Verification Link", "Click the button below to verify your email address and login.", "Verify Email Address");
             }
             catch
             {
                 var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the confirmation email." });
                 return errorResult;
             }
-
-
-            // mailkit code-maze tutorial
-            //var message = new EmailMessage(user.Email, "Free flash cards confirmation email.", "Please click the link to verify your email address:" + confirmationLink);
-            //try
-            //{
-            //    _emailService.SendEmail(message);
-            //}
-            //catch
-            //{
-            //    var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the confirmation email." });
-            //    return errorResult;
-            //}
-
-            //_logger.Log(LogLevel.Warning, confirmationLink);
 
             return new LoggedInUserDTO { Id = user.Id, Email = user.Email };
         }
@@ -177,6 +149,15 @@ namespace API.Controllers
                 var passwordResetLink = $"{baseUrl}/reset-password/?email={email}&token={token}";
 
                 // Send email
+                try
+                {
+                    _mailService.SendHTMLSendGrid(user.Email, passwordResetLink, "Password Reset", "Click the button below to reset your password.", "Reset Password");
+                }
+                catch
+                {
+                    var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the reset password email. Please try again or contact customer support." });
+                    return errorResult;
+                }
                 _logger.Log(LogLevel.Warning, passwordResetLink);
             }
             return Ok();
@@ -225,6 +206,40 @@ namespace API.Controllers
 
             // Upon successfully changing the password, token does not need to be updated. Just return Ok().
             return Ok();
+        }
+
+        [HttpPost("DeleteUser")]
+        public async Task<IActionResult> DeleteUser(DeleteUserDTO deleteUserDTO)
+        {
+            var userEmail = User.GetEmail();
+
+            var user = await _userManager.Users
+                .SingleOrDefaultAsync(user => user.Email.ToLower() == userEmail.ToLower());
+
+            if (user == null)
+            {
+                return BadRequest("Invalid user.");
+            }
+
+            if (deleteUserDTO.Password == "" | deleteUserDTO.Password == null) return Unauthorized(new { source = "DeleteUser", type = "password" });
+
+            var passwordIsCorrect = await _userManager.CheckPasswordAsync(user, deleteUserDTO.Password);
+
+            if (!passwordIsCorrect)
+            {
+                return Unauthorized(new { source = "DeleteUser", type = "password" });
+            }
+            else
+            {
+                var result = await _userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return Ok();
+                }
+
+                return BadRequest(result.Errors);
+            }
         }
     }
 }

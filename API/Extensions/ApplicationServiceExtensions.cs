@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace API.Extensions
@@ -59,9 +61,17 @@ namespace API.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddHttpClient();
-            //services
-            //   .AddFluentEmail("tech@fastflashcards.com")
-            //   .AddSmtpSender("smtp-pulse.com", 465, "andrew.umstead@gmail.com", "FpBoJTPSoTCH", );
+            services
+               .AddFluentEmail("admin@fastflashcards.com", "Fast Flash Cards")
+               .AddRazorRenderer()
+               .AddSmtpSender(new SmtpClient("smtp.sendgrid.net")
+               {
+                   UseDefaultCredentials = false,
+                   Port = 587,
+                   Credentials = new NetworkCredential("apikey", config["SENDGRID_API_KEY"]),
+                   EnableSsl = true
+               });
+            services.AddScoped<IMailService, MailService>();
 
             return services;
         }

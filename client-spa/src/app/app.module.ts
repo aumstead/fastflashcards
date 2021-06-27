@@ -43,6 +43,8 @@ import { DeleteCardModalComponent } from './_components/pages/edit-cards/delete-
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { UpdateSwModalComponent } from './_components/update-sw-modal/update-sw-modal.component';
+import { DeleteDataComponent } from './_components/pages/account-settings/delete-data/delete-data.component';
+import { DeleteDataSuccessComponent } from './_components/pages/account-settings/delete-data/delete-data-success/delete-data-success.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { UpdateSwModalComponent } from './_components/update-sw-modal/update-sw-
     ServerErrorComponent,
     DeleteCardModalComponent,
     UpdateSwModalComponent,
+    DeleteDataComponent,
+    DeleteDataSuccessComponent,
   ],
   imports: [
     BrowserModule,

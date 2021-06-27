@@ -1,0 +1,57 @@
+<div class="container m-nav">
+  <h1 class="h3 pt-3">Delete Data</h1>
+
+  <form
+    [formGroup]="deleteDataForm"
+    (ngSubmit)="deleteDataForm.valid && deleteData()"
+    class="mt-4 col-md-4 changePasswordForm"
+  >
+    <div class="form-group mb-3">
+      <label for="currentPassword"
+        >Enter your password to delete your account.</label
+      >
+      <input
+        [class.is-invalid]="
+          deleteDataForm.get('password').errors &&
+          deleteDataForm.get('password').touched
+        "
+        type="password"
+        class="form-control"
+        formControlName="password"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="deleteDataForm.get('password').hasError('required')"
+      >
+        This field is required.
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="deleteDataForm.get('password').hasError('minlength')"
+      >
+        Password must be at least 6 characters, contain an uppercase letter, and
+        a number.
+      </div>
+      <div *ngIf="errors.password" class="text-danger invalidFeedback">
+        Invalid password. *Reminder: passwords require a number, uppercase
+        letter, and at least 6 characters.
+      </div>
+    </div>
+
+    <div *ngIf="validationErrors.length > 0">
+      <ul class="text-danger">
+        <li *ngFor="let error of validationErrors">
+          {{ error }}
+        </li>
+      </ul>
+    </div>
+
+    <button
+      [disabled]="!deleteDataForm.valid"
+      class="btn btn-outline-danger w-100 mt-3"
+      type="submit"
+    >
+      Delete Account
+    </button>
+  </form>
+</div>

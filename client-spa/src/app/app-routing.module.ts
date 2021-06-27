@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountSettingsComponent } from './_components/pages/account-settings/account-settings.component';
 import { ChangePasswordSuccessComponent } from './_components/pages/account-settings/change-password/change-password-success/change-password-success.component';
 import { ChangePasswordComponent } from './_components/pages/account-settings/change-password/change-password.component';
+import { DeleteDataSuccessComponent } from './_components/pages/account-settings/delete-data/delete-data-success/delete-data-success.component';
+import { DeleteDataComponent } from './_components/pages/account-settings/delete-data/delete-data.component';
 import { AddCardsComponent } from './_components/pages/add-cards/add-cards.component';
 import { AdminComponent } from './_components/pages/admin/admin.component';
 import { DeckPageComponent } from './_components/pages/decks/deck-page/deck-page.component';
@@ -44,6 +46,10 @@ const routes: Routes = [
     component: ServerErrorComponent,
   },
   {
+    path: 'server-error',
+    component: ServerErrorComponent,
+  },
+  {
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
@@ -63,6 +69,14 @@ const routes: Routes = [
       {
         path: 'user/account-settings/change-password/success',
         component: ChangePasswordSuccessComponent,
+      },
+      {
+        path: 'user/account-settings/delete-data',
+        component: DeleteDataComponent,
+      },
+      {
+        path: 'user/account-settings/delete-data/success',
+        component: DeleteDataSuccessComponent,
       },
     ],
   },

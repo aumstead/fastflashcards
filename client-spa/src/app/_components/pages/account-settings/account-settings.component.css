@@ -8,6 +8,11 @@ table {
   font-weight: 400;
 }
 
+.noteText {
+  font-size: 0.8rem;
+  margin-left: 0.8rem;
+}
+
 @media only screen and (max-width: 770px) {
   .tableRow {
     display: flex;

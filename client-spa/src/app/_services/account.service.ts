@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { ResetPasswordDTO } from '../_models/resetPasswordDTO';
 import { ChangePasswordDTO } from '../_models/changePasswordDTO';
+import { DeleteDataDTO } from '../_models/deleteDataDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -93,6 +94,12 @@ export class AccountService {
   changePassword(dto: ChangePasswordDTO) {
     return this._http
       .post(`${this.baseUrl}/account/ChangePassword`, dto)
+      .pipe(map((response: any) => {}));
+  }
+
+  deleteData(dto: DeleteDataDTO) {
+    return this._http
+      .post(`${this.baseUrl}/account/DeleteUser`, dto)
       .pipe(map((response: any) => {}));
   }
 }

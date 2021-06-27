@@ -4,4 +4,8 @@
     Your account has been created but there was an error sending your
     confirmation email. Please contact customer support.
   </div>
+
+  <div *ngIf="!error" class="text-danger">
+    There was an error on the server. Please try again later.
+  </div>
 </div>

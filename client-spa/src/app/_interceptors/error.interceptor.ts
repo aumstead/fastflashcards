@@ -57,12 +57,16 @@ export class ErrorInterceptor implements HttpInterceptor {
               break;
 
             case 401:
+              console.log(error);
               // all 401 unauthorized errors are handled in login component try/catch block
               if (error.error?.source === 'login') {
                 // handle error in login component
                 break;
               } else if (error.error?.source === 'confirm-email') {
                 // handle error in confirm-email component
+                break;
+              } else if (error.error?.source === 'DeleteData') {
+                // handle error in delete-data component
                 break;
               } else {
                 this._toastr.error('Unauthorized', error.status);
@@ -87,6 +91,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               const navigationExtras: NavigationExtras = {
                 state: { error: error.error },
               };
+
               this._toastr.error('error in case 500');
               this._router.navigateByUrl('/server-error', navigationExtras);
               break;
