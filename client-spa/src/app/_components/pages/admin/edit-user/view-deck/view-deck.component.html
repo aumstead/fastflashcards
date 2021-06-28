@@ -1,0 +1,22 @@
+<div class="container m-nav" *ngIf="deck">
+  <h1 class="h2 pt-3">Admin View Deck:</h1>
+  <a routerLink="/admin/edit-user/{{ userId }}/view-user-decks"
+    >&larr; Back to decks</a
+  >
+  <div class="col-xl-6 pt-3">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Front</th>
+          <th>Back</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let card of deck.cards">
+          <td>{{ card.front }}</td>
+          <td>{{ card.back }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

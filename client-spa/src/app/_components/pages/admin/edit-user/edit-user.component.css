@@ -1,0 +1,23 @@
+.anchorStyleBtn {
+  background-color: transparent;
+  border: none;
+  height: min-content;
+  color: var(--color-success);
+  text-decoration: underline;
+}
+
+.anchorStyleBtn:hover {
+  color: var(--color-success-hover);
+}
+
+.anchorStyleBtnDanger {
+  background-color: transparent;
+  border: none;
+  height: min-content;
+  color: var(--color-danger);
+  text-decoration: underline;
+}
+
+.anchorStyleBtnDanger:hover {
+  color: var(--color-danger-hover);
+}

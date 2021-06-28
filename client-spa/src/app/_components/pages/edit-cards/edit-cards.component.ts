@@ -171,6 +171,7 @@ export class EditCardsComponent implements OnInit {
                 break;
               }
             }
+
             if (needToSortFlag) {
               this._userService.userCache.decks[i].cards.sort(
                 (a, b) => a.order - b.order
@@ -199,17 +200,22 @@ export class EditCardsComponent implements OnInit {
               if (
                 this._userService.userCache.decks[j].id === updatedCard.deckId
               ) {
-                // update order property according to new deck
-                this._userService.userCache.decks[j].cards.sort(
-                  (a, b) => a.order - b.order
-                );
-                const arrLength =
-                  this._userService.userCache.decks[j].cards.length;
-                const lastCard =
-                  this._userService.userCache.decks[j].cards[arrLength - 1];
-                card.order = lastCard.order + 1;
-                this._userService.userCache.decks[j].cards.push(card);
-                break;
+                // update order property according to new deck (unless deck is empty)
+                if (this._userService.userCache.decks[j].cards.length > 0) {
+                  this._userService.userCache.decks[j].cards.sort(
+                    (a, b) => a.order - b.order
+                  );
+                  const arrLength =
+                    this._userService.userCache.decks[j].cards.length;
+                  const lastCard =
+                    this._userService.userCache.decks[j].cards[arrLength - 1];
+                  card.order = lastCard.order + 1;
+                  this._userService.userCache.decks[j].cards.push(card);
+                  break;
+                } else {
+                  card.order = 1;
+                  this._userService.userCache.decks[j].cards.push(card);
+                }
               }
             }
             break;

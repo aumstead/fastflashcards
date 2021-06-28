@@ -172,6 +172,7 @@ namespace API.Controllers
                 var decodedToken = resetPasswordDTO.Token.Replace(" ", "+");
 
                 var result = await _userManager.ResetPasswordAsync(user, decodedToken, resetPasswordDTO.Password);
+
                 if (result.Succeeded)
                 {
                     return Ok();

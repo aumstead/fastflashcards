@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class DeleteUserDTO
+    public class AdminUpdateUserPasswordDTO
     {
-        public string Password { get; set; }
+        public string NewPassword { get; set; }
+        public string Id { get; set; }
     }
 }

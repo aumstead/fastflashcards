@@ -26,7 +26,7 @@ namespace API.Services
                 var email = mailer
                 .To(recipientEmail)
                 .Subject(subject)
-                .UsingTemplateFromFile($"{Directory.GetCurrentDirectory()}\\wwwroot\\EmailTemplates\\OneButtonTemplate.cshtml", new { Link = link, Text = text, ButtonText = buttonText });
+                .UsingTemplateFromFile($"{Directory.GetCurrentDirectory()}\\EmailTemplates\\OneButtonTemplate.cshtml", new { Link = link, Text = text, ButtonText = buttonText });
 
                 await email.SendAsync();
             }

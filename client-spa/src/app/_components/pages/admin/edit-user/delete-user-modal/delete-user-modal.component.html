@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Delete User</h4>
+  <button
+    type="button"
+    class="close pull-right closeBtn"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span class="timesSpan" aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">Are you sure you want to delete this account?</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="deleteUserHandler()">
+    Delete
+  </button>
+  <button type="button" class="btn btn-secondary" (click)="bsModalRef.hide()">
+    Cancel
+  </button>
+</div>

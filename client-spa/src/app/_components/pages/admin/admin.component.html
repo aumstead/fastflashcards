@@ -1,3 +1,22 @@
-<div class="container m-nav">
-  <p>admin works!</p>
+<div class="container m-nav" *ngIf="users">
+  <h1 class="h2 pt-3">Admin Page</h1>
+  <h2 class="h4">User List</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Is Email Confirmed?</th>
+        <th scope="col">Decks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <a routerLink="/admin/edit-user/{{ user.id }}">{{ user.email }}</a>
+        </td>
+        <td>{{ user.emailConfirmed }}</td>
+        <td>{{ user.decks.length }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

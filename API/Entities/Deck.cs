@@ -13,6 +13,7 @@ namespace API.Entities
         [Required]
         [MaxLength(40, ErrorMessage = "Cannot exceed 40 characters")]
         public string Name { get; set; }
+        [Required]
         public string AppUserId { get; set; }
         public ICollection<Card> Cards { get; set; }
     }

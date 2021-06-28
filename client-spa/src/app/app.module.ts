@@ -45,6 +45,12 @@ import { environment } from '../environments/environment';
 import { UpdateSwModalComponent } from './_components/update-sw-modal/update-sw-modal.component';
 import { DeleteDataComponent } from './_components/pages/account-settings/delete-data/delete-data.component';
 import { DeleteDataSuccessComponent } from './_components/pages/account-settings/delete-data/delete-data-success/delete-data-success.component';
+import { EditUserComponent } from './_components/pages/admin/edit-user/edit-user.component';
+import { EditEmailConfirmedModalComponent } from './_components/pages/admin/edit-user/edit-email-confirmed-modal/edit-email-confirmed-modal.component';
+import { ViewUserDecksComponent } from './_components/pages/admin/edit-user/view-user-decks/view-user-decks.component';
+import { ViewDeckComponent } from './_components/pages/admin/edit-user/view-deck/view-deck.component';
+import { EditPasswordModalComponent } from './_components/pages/admin/edit-user/edit-password-modal/edit-password-modal.component';
+import { DeleteUserModalComponent } from './_components/pages/admin/edit-user/delete-user-modal/delete-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +85,12 @@ import { DeleteDataSuccessComponent } from './_components/pages/account-settings
     UpdateSwModalComponent,
     DeleteDataComponent,
     DeleteDataSuccessComponent,
+    EditUserComponent,
+    EditEmailConfirmedModalComponent,
+    ViewUserDecksComponent,
+    ViewDeckComponent,
+    EditPasswordModalComponent,
+    DeleteUserModalComponent,
   ],
   imports: [
     BrowserModule,

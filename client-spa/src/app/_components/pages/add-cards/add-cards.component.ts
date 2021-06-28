@@ -84,6 +84,7 @@ export class AddCardsComponent implements OnInit {
     const newCard = {
       front: this.addCardForm.value.front,
       back: this.addCardForm.value.back,
+      appUserId: this.user.id,
     };
     this.addCardQueue.push(newCard);
 

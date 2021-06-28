@@ -4,6 +4,7 @@ footer {
   /* margin-top: auto; */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-top: 1px solid rgb(226, 226, 226);
   font-size: 0.8rem;
 }

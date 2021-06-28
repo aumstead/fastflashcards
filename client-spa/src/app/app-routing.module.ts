@@ -7,6 +7,9 @@ import { DeleteDataSuccessComponent } from './_components/pages/account-settings
 import { DeleteDataComponent } from './_components/pages/account-settings/delete-data/delete-data.component';
 import { AddCardsComponent } from './_components/pages/add-cards/add-cards.component';
 import { AdminComponent } from './_components/pages/admin/admin.component';
+import { EditUserComponent } from './_components/pages/admin/edit-user/edit-user.component';
+import { ViewDeckComponent } from './_components/pages/admin/edit-user/view-deck/view-deck.component';
+import { ViewUserDecksComponent } from './_components/pages/admin/edit-user/view-user-decks/view-user-decks.component';
 import { DeckPageComponent } from './_components/pages/decks/deck-page/deck-page.component';
 import { DecksComponent } from './_components/pages/decks/decks.component';
 import { StudyComponent } from './_components/pages/decks/study/study.component';
@@ -42,6 +45,10 @@ const routes: Routes = [
     component: ResetPasswordConfirmationComponent,
   },
   {
+    path: 'user/account-settings/delete-data/success',
+    component: DeleteDataSuccessComponent,
+  },
+  {
     path: 'server-error/:error',
     component: ServerErrorComponent,
   },
@@ -74,13 +81,26 @@ const routes: Routes = [
         path: 'user/account-settings/delete-data',
         component: DeleteDataComponent,
       },
+    ],
+  },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'admin', component: AdminComponent },
+      { path: 'admin/edit-user/:id', component: EditUserComponent },
       {
-        path: 'user/account-settings/delete-data/success',
-        component: DeleteDataSuccessComponent,
+        path: 'admin/edit-user/:id/view-user-decks',
+        component: ViewUserDecksComponent,
+      },
+      {
+        path: 'admin/edit-user/:id/view-deck/:deckId',
+        component: ViewDeckComponent,
       },
     ],
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 

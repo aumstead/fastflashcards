@@ -1,0 +1,72 @@
+<div class="container m-nav" *ngIf="user">
+  <h1 class="h2 pt-3">Admin Edit User</h1>
+  <a routerLink="/admin">&larr; Back to admin home</a>
+  <div class="col-xl-6 pt-3">
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th scope="row">Email</th>
+          <td>{{ user.email }}</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th scope="row">Is Email Confirmed?</th>
+          <td>{{ user.emailConfirmed }}</td>
+          <td>-</td>
+          <td>
+            <button
+              class="anchorStyleBtn"
+              (click)="openEditEmailConfirmedModal()"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Decks</th>
+          <td>{{ user.decks.length }}</td>
+          <td>
+            <a routerLink="/admin/edit-user/{{ userId }}/view-user-decks"
+              >View</a
+            >
+          </td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th scope="row">Cards</th>
+          <td>{{ cardCount }}</td>
+          <td>
+            <a routerLink="/admin/edit-user/{{ userId }}/view-user-decks"
+              >View</a
+            >
+          </td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th scope="row">Password</th>
+          <td>-</td>
+          <td>-</td>
+          <td>
+            <button class="anchorStyleBtn" (click)="openEditPasswordModal()">
+              Edit
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Delete User</th>
+          <td>-</td>
+          <td>-</td>
+          <td>
+            <button
+              class="anchorStyleBtnDanger"
+              (click)="openDeleteUserModal()"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
