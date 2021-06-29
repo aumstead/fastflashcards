@@ -88,7 +88,10 @@
 
     <div *ngIf="errors.confirmEmail">
       <div class="text-danger">Confirm your email address to login.</div>
-      <div>Need another email? Click here</div>
+      <div>
+        Need a verification email?
+        <a routerLink="/login/verification-email">Click here.</a>
+      </div>
     </div>
 
     <button

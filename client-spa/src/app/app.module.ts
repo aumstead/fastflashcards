@@ -51,6 +51,8 @@ import { ViewUserDecksComponent } from './_components/pages/admin/edit-user/view
 import { ViewDeckComponent } from './_components/pages/admin/edit-user/view-deck/view-deck.component';
 import { EditPasswordModalComponent } from './_components/pages/admin/edit-user/edit-password-modal/edit-password-modal.component';
 import { DeleteUserModalComponent } from './_components/pages/admin/edit-user/delete-user-modal/delete-user-modal.component';
+import { SendVerificationEmailComponent } from './_components/pages/login/send-verification-email/send-verification-email.component';
+import { SendVerificationEmailConfirmationComponent } from './_components/pages/login/send-verification-email-confirmation/send-verification-email-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,8 @@ import { DeleteUserModalComponent } from './_components/pages/admin/edit-user/de
     ViewDeckComponent,
     EditPasswordModalComponent,
     DeleteUserModalComponent,
+    SendVerificationEmailComponent,
+    SendVerificationEmailConfirmationComponent,
   ],
   imports: [
     BrowserModule,

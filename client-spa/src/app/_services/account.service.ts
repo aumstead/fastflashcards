@@ -35,7 +35,10 @@ export class AccountService {
       map(
         (response: LoggedInUser) => {
           const user = response;
-          // users are now not automatically logged in. they must confirm email address.
+          // users are automatically logged in.
+          if (user) {
+            this.setCurrentUser(user);
+          }
           return user;
         },
         (error) => console.error(error)
@@ -100,6 +103,12 @@ export class AccountService {
   deleteData(dto: DeleteDataDTO) {
     return this._http
       .post(`${this.baseUrl}/account/DeleteUser`, dto)
+      .pipe(map((response: any) => {}));
+  }
+
+  requestVerificationEmail(email: string) {
+    return this._http
+      .post(`${this.baseUrl}/account/SendVerificationEmail?email=${email}`, {})
       .pipe(map((response: any) => {}));
   }
 }

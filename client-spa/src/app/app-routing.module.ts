@@ -18,6 +18,8 @@ import { HomeComponent } from './_components/pages/home/home.component';
 import { ForgotPasswordConfirmationComponent } from './_components/pages/login/forgot-password-confirmation/forgot-password-confirmation.component';
 import { ForgotPasswordComponent } from './_components/pages/login/forgot-password/forgot-password.component';
 import { LoginComponent } from './_components/pages/login/login.component';
+import { SendVerificationEmailConfirmationComponent } from './_components/pages/login/send-verification-email-confirmation/send-verification-email-confirmation.component';
+import { SendVerificationEmailComponent } from './_components/pages/login/send-verification-email/send-verification-email.component';
 import { NotFoundComponent } from './_components/pages/not-found/not-found.component';
 import { ConfirmEmailComponent } from './_components/pages/register/confirm-email/confirm-email.component';
 import { RegisterComponent } from './_components/pages/register/register.component';
@@ -35,6 +37,14 @@ const routes: Routes = [
   {
     path: 'login/forgot-password-confirmation',
     component: ForgotPasswordConfirmationComponent,
+  },
+  {
+    path: 'login/verification-email',
+    component: SendVerificationEmailComponent,
+  },
+  {
+    path: 'login/verification-email-success',
+    component: SendVerificationEmailConfirmationComponent,
   },
   { path: 'register', component: RegisterComponent },
   { path: 'register/success/:email', component: SuccessComponent },

@@ -1,0 +1,53 @@
+<div class="container m-nav">
+  <h4 class="pt-3">Request Verification Email</h4>
+  <form
+    [formGroup]="requestVerificationEmailForm"
+    (ngSubmit)="requestVerificationEmailForm.valid && requestEmailHandler()"
+    class="col-md-4 mt-4 requestVerificationEmailForm"
+  >
+    <div class="form-group mb-3">
+      <label for="email">Email Address</label>
+      <input
+        [class.is-invalid]="
+          requestVerificationEmailForm.get('email').errors &&
+          requestVerificationEmailForm.get('email').touched
+        "
+        class="form-control mr-sm-2"
+        type="email"
+        name="email"
+        formControlName="email"
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="requestVerificationEmailForm.get('email').hasError('required')"
+      >
+        Please enter an email.
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="requestVerificationEmailForm.get('email').hasError('minlength')"
+      >
+        Requires at least 3 characters.
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="requestVerificationEmailForm.get('email').hasError('maxlength')"
+      >
+        Has a max length of 40 characters.
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="requestVerificationEmailForm.get('email').hasError('email')"
+      >
+        Please enter a valid email address.
+      </div>
+    </div>
+    <button
+      class="btn btn-warning"
+      type="submit"
+      [disabled]="!requestVerificationEmailForm.valid"
+    >
+      Request verification email
+    </button>
+  </form>
+</div>

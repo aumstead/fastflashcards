@@ -76,10 +76,8 @@ namespace API.Controllers
                 return errorResult;
             }
 
-            return new LoggedInUserDTO { Id = user.Id, Email = user.Email };
+            return new LoggedInUserDTO { Id = user.Id, Email = user.Email.ToLower(), Token = await _tokenService.CreateToken(user) };
         }
-
-
 
         [HttpGet("confirm-email")]
         public async Task<ActionResult<LoggedInUserDTO>> ConfirmEmail(string userId, string token)
@@ -210,6 +208,7 @@ namespace API.Controllers
         }
 
         [HttpPost("DeleteUser")]
+        [Authorize]
         public async Task<IActionResult> DeleteUser(DeleteUserDTO deleteUserDTO)
         {
             var userEmail = User.GetEmail();
@@ -241,6 +240,32 @@ namespace API.Controllers
 
                 return BadRequest(result.Errors);
             }
+        }
+
+        [HttpPost("SendVerificationEmail")]
+        public async Task<IActionResult> SendVerificationEmail(string email)
+        {
+            var user = await _userManager.Users
+                .SingleOrDefaultAsync(user => user.Email.ToLower() == email.ToLower());
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            var baseUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+
+            var confirmationLink = $"{baseUrl}/register/confirm-email/?userId={user.Id}&token={token}";
+
+            // send email
+            try
+            {
+                _mailService.SendHTMLSendGrid(user.Email, confirmationLink, "Email Verification Link", "Click the button below to verify your email address and login.", "Verify Email Address");
+            }
+            catch
+            {
+                var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the confirmation email." });
+                return errorResult;
+            }
+
+            return Ok();
         }
     }
 }
