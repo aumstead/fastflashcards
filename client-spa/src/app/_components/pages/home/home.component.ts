@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AccountService } from 'src/app/_services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +31,12 @@ export class HomeComponent implements OnInit {
   counter: number = 0;
   reveal = false;
 
-  constructor(private _titleService: Title) {}
+  constructor(
+    private _titleService: Title,
+    private _router: Router,
+    private _toastr: ToastrService,
+    private _accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
     this._titleService.setTitle(`Home | FastFlashCards.com`);
@@ -51,5 +59,16 @@ export class HomeComponent implements OnInit {
 
   resetCounter() {
     this.counter = 0;
+  }
+
+  demoLogin() {
+    this._accountService.demoLogin().subscribe(
+      () => {
+        this._router.navigateByUrl('/user/decks');
+      },
+      (error) => {
+        this._toastr.error('Error logging into demo.');
+      }
+    );
   }
 }

@@ -22,6 +22,7 @@
 
 .loginBtn {
   width: 7rem;
+  margin-right: 1rem;
 }
 
 .my-card {
@@ -35,6 +36,10 @@
   text-decoration: underline;
   border: none;
   background-color: transparent;
+}
+
+.demoLoginBtn {
+  width: fit-content;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -55,5 +60,15 @@
     max-width: 30rem;
     align-self: center;
     justify-self: center;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .demoLoginBtn {
+    margin-top: 1rem;
+  }
+
+  .loginBtn {
+    margin-right: unset;
   }
 }

@@ -111,4 +111,19 @@ export class AccountService {
       .post(`${this.baseUrl}/account/SendVerificationEmail?email=${email}`, {})
       .pipe(map((response: any) => {}));
   }
+
+  demoLogin() {
+    const model = {
+      email: 'demo@fastflashcards.com',
+      password: 'Passw0rd',
+    };
+    return this._http.post(`${this.baseUrl}/account/login`, model).pipe(
+      map((response: LoggedInUser) => {
+        const user = response;
+        if (user) {
+          this.setCurrentUser(user);
+        }
+      })
+    );
+  }
 }
