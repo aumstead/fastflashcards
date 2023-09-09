@@ -39,6 +39,25 @@ body {
   transform: translateY(100px);
 }
 
+/* 2023 update override some styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-warning {
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+}
+.btn-success {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
 @media only screen and (max-width: 550px) {
   body {
     font-size: 0.8rem;

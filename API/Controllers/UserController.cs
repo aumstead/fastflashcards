@@ -23,9 +23,9 @@ namespace API.Controllers
         [HttpGet(Name = "GetUser")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetUser([FromQuery] string id)
+        public async Task<IActionResult> GetUser([FromQuery] Guid id)
         {
-            var user = await _unitOfWork.Users.GetUserWithDecksAndCards(id);
+            var user = await _unitOfWork.Users.GetUserWithDecksAndCards(id.ToString());
 
             if (user == null)
             {

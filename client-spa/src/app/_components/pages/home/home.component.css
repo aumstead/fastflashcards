@@ -4,6 +4,11 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.h4,
+h1,
+h4 {
+  font-weight: 400;
+}
 .hero-info {
   align-self: center;
   justify-self: center;

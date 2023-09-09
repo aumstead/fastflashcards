@@ -35,7 +35,7 @@ namespace API
             services.AddApplicationServices(Configuration);
             services.AddIdentityServices(Configuration);
             services.AddControllers();            
-            services.AddCors();            
+            services.AddCors();
             //services.AddSwaggerGen(c =>
             //{
             //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
@@ -49,7 +49,7 @@ namespace API
 
             if (env.IsDevelopment())
             {
-                // app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
                 // using custom exception middleware instead
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
@@ -62,18 +62,20 @@ namespace API
             app.UseCors(policy => policy.AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials()
-                .WithOrigins("https://localhost:4200"));
+                .WithOrigins("http://localhost:4200", "http://localhost:3000")); // 4200 for angular, 3000 for react
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            // this middleware looks for index.html to serve
+            //app.UseDefaultFiles();
+            // this one looks for the wwwroot folder to serve content
+            //app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapFallbackToController("Index", "Fallback");
+                //endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }
