@@ -12,17 +12,8 @@ namespace API.Data
 {
     public class DataContext : IdentityDbContext<AppUser>
     {
-        protected readonly IConfiguration Configuration;
-
-        public DataContext(IConfiguration configuration)
+        public DataContext(DbContextOptions options) : base(options)
         {
-            Configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            // connect to sqlite database
-            options.UseSqlite(Configuration.GetConnectionString("Sqlite"));
         }
 
         public DbSet<AppUser> AppUsers { get; set; }

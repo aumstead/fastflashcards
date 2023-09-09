@@ -116,7 +116,7 @@ export class AccountService {
   demoLogin() {
     const model = {
       email: 'demo@fastflashcards.com',
-      password: 'Passw0rd',
+      password: 'Gandalf1',
     };
     return this._http.post(`${this.baseUrl}/account/login`, model).pipe(
       map((response: LoggedInUser) => {
