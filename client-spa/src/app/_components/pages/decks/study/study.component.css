@@ -13,11 +13,11 @@
   background-color: transparent;
   height: min-content;
   margin-right: 1.5rem;
-  color: var(--color-info);
+  color: #3498db;
 }
 
 .shuffle-btn:hover {
-  color: var(--color-info-hover);
+  color: #2c81ba;
 }
 
 .cardText {

@@ -68,9 +68,9 @@ namespace API
             app.UseAuthorization();
 
             // this middleware looks for index.html to serve
-            //app.UseDefaultFiles();
+            app.UseDefaultFiles();
             // this one looks for the wwwroot folder to serve content
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

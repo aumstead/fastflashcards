@@ -37,7 +37,7 @@ h4 {
 }
 
 .demo-deck-btn {
-  color: var(--color-success);
+  color: #18bc9c;
   text-decoration: underline;
   border: none;
   background-color: transparent;

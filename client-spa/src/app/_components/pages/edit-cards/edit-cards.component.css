@@ -74,12 +74,12 @@
 }
 
 .my-pagination /deep/ .ngx-pagination li a:hover {
-  background-color: var(--color-primary);
+  background-color: #253544;
   color: white;
 }
 
 .my-pagination /deep/ .ngx-pagination .current {
-  background: var(--color-primary);
+  background: #253544;
   padding: 0.35rem 0.8rem;
   border-radius: 3px;
 }

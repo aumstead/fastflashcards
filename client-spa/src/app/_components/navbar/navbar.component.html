@@ -71,13 +71,7 @@
     <ul class="mobileUL" *ngIf="_accountService.currentUser$ | async as user">
       <li class="liItem">
         <a
-          class="
-            d-flex
-            flex-column
-            align-items-center
-            justify-content-between
-            link
-          "
+          class="d-flex flex-column align-items-center justify-content-between link"
           [routerLink]="['/user/decks']"
         >
           <svg
@@ -142,13 +136,7 @@
       </li>
       <li class="liItem">
         <a
-          class="
-            d-flex
-            flex-column
-            align-items-center
-            justify-content-between
-            link
-          "
+          class="d-flex flex-column align-items-center justify-content-between link"
           routerLink="{{
             deckId ? '/user/add-cards/' + deckId : '/user/add-cards/'
           }}"
@@ -185,13 +173,7 @@
       </li>
       <li>
         <a
-          class="
-            d-flex
-            flex-column
-            align-items-center
-            justify-content-between
-            link
-          "
+          class="d-flex flex-column align-items-center justify-content-between link"
           routerLink="{{
             deckId ? '/user/edit-cards/' + deckId : '/user/edit-cards/'
           }}"
