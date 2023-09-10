@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1694348044722,
+  "timestamp": 1694348970492,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,13 +13,12 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.js",
+        "/main.8de8c24d64e47a755840.js",
         "/manifest.webmanifest",
-        "/polyfills.js",
-        "/runtime.js",
-        "/scripts.js",
-        "/styles.css",
-        "/vendor.js"
+        "/polyfills.94daefd414b8355106ab.js",
+        "/runtime.7b63b9fd40098a2e8207.js",
+        "/scripts.b7a3af8d3b90cf668446.js",
+        "/styles.9df5ba124e391ef1ca0b.css"
       ],
       "patterns": []
     },
@@ -58,14 +57,13 @@
     "/assets/images/google-btn-1.png": "79ed19930de9c19e2b65813f126b36bd2a135339",
     "/assets/images/google-btn.png": "bc32c95532980eb76e3d12a57b840795ecb0ae16",
     "/favicon.ico": "cf77c4be9e1e1eeaf6b2dc2943d3fb1ad79c0bb8",
-    "/index.html": "50ae1ca867c9e559916d21de73bc9b09604891db",
-    "/main.js": "5e985c4564745a31b75c581ff331f9966c01f54e",
+    "/index.html": "85f67fa493340604a9779964083bbfa6eabefc52",
+    "/main.8de8c24d64e47a755840.js": "fbd91473153cfeb3ab7eb15ec572c1c7322dd793",
     "/manifest.webmanifest": "e0680651e141e9963c60293e9341a9072135b4fe",
-    "/polyfills.js": "47944cd545d24fed1a31357ab9e294df785b5985",
-    "/runtime.js": "154c277c076cfc8ee335df5d9349395c6bf58db5",
-    "/scripts.js": "bca01a806c382ce225f82fdbd7da738d159fba16",
-    "/styles.css": "ac0d75d9ff9c289dbd554f867a21d82cb39ee500",
-    "/vendor.js": "4ac4ca37ae059ddb3d50a6e0328a64ca96d18f90"
+    "/polyfills.94daefd414b8355106ab.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
+    "/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/scripts.b7a3af8d3b90cf668446.js": "1d39a0355c0b6be41c9a01f590c181d76d526260",
+    "/styles.9df5ba124e391ef1ca0b.css": "1bf7b4923bef5603813af3bcfd6933c6e9c48711"
   },
   "navigationUrls": [
     {
