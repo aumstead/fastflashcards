@@ -25,7 +25,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
@@ -71,7 +71,7 @@
           "options": {
             "sslKey": "./ssl/server.key",
             "sslCert": "./ssl/server.crt",
-            "ssl": true,
+            "ssl": false,
             "browserTarget": "client-spa:build"
           },
           "configurations": {
