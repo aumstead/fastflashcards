@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1625157714690,
+  "timestamp": 1694318256366,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,13 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.9d6ab86b55e4877bf56f.js",
+        "/main.js",
         "/manifest.webmanifest",
-        "/polyfills.94daefd414b8355106ab.js",
-        "/runtime.7b63b9fd40098a2e8207.js",
-        "/scripts.c4c155fcd63d2bd4d4c6.js",
-        "/styles.25a75770ab8d5341f6f4.css"
+        "/polyfills.js",
+        "/runtime.js",
+        "/scripts.js",
+        "/styles.css",
+        "/vendor.js"
       ],
       "patterns": []
     },
@@ -57,13 +58,14 @@
     "/assets/images/google-btn-1.png": "79ed19930de9c19e2b65813f126b36bd2a135339",
     "/assets/images/google-btn.png": "bc32c95532980eb76e3d12a57b840795ecb0ae16",
     "/favicon.ico": "cf77c4be9e1e1eeaf6b2dc2943d3fb1ad79c0bb8",
-    "/index.html": "b1b8b0ad146218fd5c8c21e0e4c6b73f02f13865",
-    "/main.9d6ab86b55e4877bf56f.js": "2902e9de990fbeb5f8c23779e1b5e4b5235f78b1",
-    "/manifest.webmanifest": "3693a4c7f5b63ab90f7ae5943471693537d839df",
-    "/polyfills.94daefd414b8355106ab.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
-    "/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
-    "/scripts.c4c155fcd63d2bd4d4c6.js": "82ea9ce454f03f0990c4a4cf9077142b61759050",
-    "/styles.25a75770ab8d5341f6f4.css": "c91b8b46da4c1942fba3efd65a43e5ee0e84d5a2"
+    "/index.html": "50ae1ca867c9e559916d21de73bc9b09604891db",
+    "/main.js": "149dcc128318343a540438d34fd0f2a104ff569e",
+    "/manifest.webmanifest": "e0680651e141e9963c60293e9341a9072135b4fe",
+    "/polyfills.js": "47944cd545d24fed1a31357ab9e294df785b5985",
+    "/runtime.js": "154c277c076cfc8ee335df5d9349395c6bf58db5",
+    "/scripts.js": "bca01a806c382ce225f82fdbd7da738d159fba16",
+    "/styles.css": "3b06f5f287c5cbcb7831947528b05e52d7202d99",
+    "/vendor.js": "4ac4ca37ae059ddb3d50a6e0328a64ca96d18f90"
   },
   "navigationUrls": [
     {

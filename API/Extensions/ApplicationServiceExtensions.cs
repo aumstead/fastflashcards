@@ -33,7 +33,7 @@ namespace API.Extensions
                 if (env == "Development")
                 {
                     // Use connection string from file.
-                    connStr = config.GetConnectionString("DefaultConnection");
+                    connStr = config.GetConnectionString("LocalPostGreSQLConnection");
                 }
                 else
                 {
@@ -56,7 +56,8 @@ namespace API.Extensions
 
                 // Whether the connection string came from the local development configuration file
                 // or from the environment variable from Heroku, use it to set up your DbContext.
-                options.UseNpgsql(connStr);
+                    options.UseNpgsql(connStr);
+                
             });
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

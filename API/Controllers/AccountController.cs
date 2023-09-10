@@ -66,15 +66,15 @@ namespace API.Controllers
             var confirmationLink = $"{baseUrl}/register/confirm-email/?userId={user.Id}&token={token}";
 
             // send email
-            try
-            {
-                _mailService.SendHTMLSendGrid(user.Email, confirmationLink, "Email Verification Link", "Click the button below to verify your email address and login.", "Verify Email Address");
-            }
-            catch
-            {
-                var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the confirmation email." });
-                return errorResult;
-            }
+            //try
+            //{
+            //    _mailService.SendHTMLSendGrid(user.Email, confirmationLink, "Email Verification Link", "Click the button below to verify your email address and login.", "Verify Email Address");
+            //}
+            //catch
+            //{
+            //    var errorResult = StatusCode(StatusCodes.Status500InternalServerError, new { source = "register", type = "send email", message = "There was an error sending the confirmation email." });
+            //    return errorResult;
+            //}
 
             return new LoggedInUserDTO { Id = user.Id, Email = user.Email.ToLower(), Token = await _tokenService.CreateToken(user) };
         }
@@ -116,10 +116,10 @@ namespace API.Controllers
 
             if (loginDTO.Password == "" | loginDTO.Password == null) return Unauthorized(new { source = "login", type = "password" });
 
-            if (!user.EmailConfirmed && (await _userManager.CheckPasswordAsync(user, loginDTO.Password)))
-            {
-                return Unauthorized(new { source = "login", type = "confirm email" });
-            }
+            //if (!user.EmailConfirmed && (await _userManager.CheckPasswordAsync(user, loginDTO.Password)))
+            //{
+            //    return Unauthorized(new { source = "login", type = "confirm email" });
+            //}
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDTO.Password, false);
 

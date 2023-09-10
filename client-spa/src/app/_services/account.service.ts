@@ -17,7 +17,7 @@ export class AccountService {
   private currentUserSource = new BehaviorSubject<LoggedInUser>(null);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private _http: HttpClient, private _userService: UserService) {}
+  constructor(private _http: HttpClient, private _userService: UserService) { }
 
   login(model: any) {
     return this._http.post(`${this.baseUrl}/account/login`, model).pipe(
@@ -85,37 +85,37 @@ export class AccountService {
   forgotPassword(email: string) {
     return this._http
       .post(`${this.baseUrl}/account/ForgotPassword?email=${email}`, {})
-      .pipe(map((response: any) => {}));
+      .pipe(map((response: any) => { }));
   }
 
   resetPassword(dto: ResetPasswordDTO) {
     return this._http
       .post(`${this.baseUrl}/account/ResetPassword`, dto)
-      .pipe(map((response: any) => {}));
+      .pipe(map((response: any) => { }));
   }
 
   changePassword(dto: ChangePasswordDTO) {
     return this._http
       .post(`${this.baseUrl}/account/ChangePassword`, dto)
-      .pipe(map((response: any) => {}));
+      .pipe(map((response: any) => { }));
   }
 
   deleteData(dto: DeleteDataDTO) {
     return this._http
       .post(`${this.baseUrl}/account/DeleteUser`, dto)
-      .pipe(map((response: any) => {}));
+      .pipe(map((response: any) => { }));
   }
 
   requestVerificationEmail(email: string) {
     return this._http
       .post(`${this.baseUrl}/account/SendVerificationEmail?email=${email}`, {})
-      .pipe(map((response: any) => {}));
+      .pipe(map((response: any) => { }));
   }
 
   demoLogin() {
     const model = {
       email: 'demo@fastflashcards.com',
-      password: 'Passw0rd',
+      password: 'Gandalf1',
     };
     return this._http.post(`${this.baseUrl}/account/login`, model).pipe(
       map((response: LoggedInUser) => {
