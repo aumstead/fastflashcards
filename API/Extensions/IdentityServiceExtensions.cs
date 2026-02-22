@@ -22,7 +22,7 @@ namespace API.Extensions
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 3;
-                options.SignIn.RequireConfirmedEmail = true;
+                options.SignIn.RequireConfirmedEmail = false;
             })
                 .AddSignInManager<SignInManager<AppUser>>()
                 .AddDefaultTokenProviders()
